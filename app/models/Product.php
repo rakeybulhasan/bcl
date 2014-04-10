@@ -32,8 +32,10 @@ class Product extends Eloquent
 }
     public function productdetail()
     {
+    return 'ok';
        // return $this->hasMany('ProductDetail', 'product_id');
        // return $this->belongsToMany('ProductDetail');
     }
+
 
 }

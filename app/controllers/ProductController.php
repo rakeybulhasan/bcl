@@ -64,7 +64,7 @@ class ProductController extends BaseController{
         }
 
     }
-    
+
     public function getUpdate($id)
     {
         $info = Product::find($id);
