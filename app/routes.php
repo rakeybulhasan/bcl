@@ -21,3 +21,5 @@ Route::put('checkupdate/{$id}','UserController@putCheckupdate');
 Route::controller('clientsuppliers', 'ClientSupplierController');
 Route::post('checkupdate/{$id}','ClientSupplierController@postCheckupdate');
 Route::controller('products', 'ProductController');
+Route::controller('categories', 'ProductCategoryController');
+Route::post('checkupdate/{$id}','ProductCategoryController@putCategoryupdate');

@@ -30,12 +30,17 @@ class Product extends Eloquent
    // print_r($list) ; exit;
     return $list;
 }
-    public function productdetail()
+
+    public function productdetails()
     {
-    return 'ok';
-       // return $this->hasMany('ProductDetail', 'product_id');
-       // return $this->belongsToMany('ProductDetail');
+        return $this->hasMany('ProductDetail');
     }
 
+
+    public function delete()
+    {
+        $this->productdetails()->delete();
+        return parent::delete();
+    }
 
 }

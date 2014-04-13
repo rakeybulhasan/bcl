@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be41fe95-986c-4dc9-95f6-f47509ccdda3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/ProductCategoryController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/ProductCategory/add.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/ProductCategory/list.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/ProductCategory/update.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php" afterPath="$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Product.php" afterPath="$PROJECT_DIR$/app/models/Product.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ProductCategory.php" afterPath="$PROJECT_DIR$/app/models/ProductCategory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/controllers/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ProductDetail.php" afterPath="$PROJECT_DIR$/app/models/ProductDetail.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts.blade.php" afterPath="$PROJECT_DIR$/app/views/layouts.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Products/list.blade.php" afterPath="$PROJECT_DIR$/app/views/Products/list.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bcl.iws" />
@@ -13,32 +22,33 @@
     <file path="/routes.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396347531863" ignored="false" />
     <file path="/2014_03_31_094315_create_users_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396259460167" ignored="false" />
     <file path="/2014_03_31_104729_create_users_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396262959985" ignored="false" />
-    <file path="/layouts.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397036133770" ignored="false" />
+    <file path="/layouts.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397120630103" ignored="false" />
     <file path="/index.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396356890575" ignored="false" />
     <file path="/UsersController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396339163665" ignored="false" />
     <file path="/UserController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397020866320" ignored="false" />
     <file path="/loginlayout.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396358193352" ignored="false" />
-    <file path="/list.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397039884713" ignored="false" />
+    <file path="/list.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397363355070" ignored="false" />
     <file path="/2014_04_02_051826_create_countries_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396416013501" ignored="false" />
     <file path="/2014_04_02_055519_create_countries_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396418201971" ignored="false" />
     <file path="/2014_04_02_055752_create_users_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396418289151" ignored="false" />
-    <file path="/add.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397030963200" ignored="false" />
-    <file path="/Dummy.txt" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397108093629" ignored="false" />
+    <file path="/add.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397121007328" ignored="false" />
+    <file path="/Dummy.txt" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397361872802" ignored="false" />
     <file path="$PROJECT_DIR$/app/storage/views/abc8672f6387c6b89e9c7af1ae25d80e" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396775170015" ignored="false" />
     <file path="$PROJECT_DIR$/../metronic_admin/form_validation.html" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396507566531" ignored="false" />
     <file path="/a.dummy" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396520386088" ignored="false" />
-    <file path="/update.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396943982586" ignored="false" />
+    <file path="/update.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397123537980" ignored="false" />
     <file path="$PROJECT_DIR$/app/storage/views/15afe112b44a63dee86a4c1464f887b2" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396773901785" ignored="false" />
     <file path="/details.blade.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396949342478" ignored="false" />
     <file path="/UserTypeController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396863940742" ignored="false" />
     <file path="/2014_04_02_061806_create_users_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396865820343" ignored="false" />
     <file path="/ClientSupplierController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1396949131161" ignored="false" />
-    <file path="/ProductController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397104140776" ignored="false" />
-    <file path="/ProductDetail.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397104770156" ignored="false" />
+    <file path="/ProductController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397116194186" ignored="false" />
+    <file path="/ProductDetail.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397115543329" ignored="false" />
     <file path="/2014_04_08_080621_create_products_table.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397021574366" ignored="false" />
     <file path="/2014_04_07_102018_create_client_suppliers.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397026909585" ignored="false" />
-    <file path="/Product.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397108051789" ignored="false" />
+    <file path="/Product.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397115900267" ignored="false" />
     <file path="/ProductCategory.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397046030541" ignored="false" />
+    <file path="/ProductCategoryController.php" changelist="be41fe95-986c-4dc9-95f6-f47509ccdda3" time="1397122877235" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,25 +71,7 @@
       <file leaf-file-name="ProductController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="1933" selection-end="1933" vertical-scroll-proportion="-10.041667">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014_04_08_083437_create_product_details_table.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="5" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
+            <state line="69" column="5" selection-start="2067" selection-end="2067" vertical-scroll-proportion="-40.0">
               <folding />
             </state>
           </provider>
@@ -88,52 +80,7 @@
       <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="7" selection-start="1018" selection-end="1044" vertical-scroll-proportion="-22.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="4" selection-start="262" selection-end="289" vertical-scroll-proportion="-6.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Product.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/Product.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.010380623">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientSupplier.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/ClientSupplier.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductDetail.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/ProductDetail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="8" selection-start="130" selection-end="130" vertical-scroll-proportion="-4.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductCategory.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/ProductCategory.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="1" selection-start="150" selection-end="150" vertical-scroll-proportion="-4.375">
+            <state line="138" column="32" selection-start="4200" selection-end="4200" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -142,7 +89,70 @@
       <file leaf-file-name="ClientSupplierController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/ClientSupplierController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="8" selection-start="3987" selection-end="4043" vertical-scroll-proportion="0.0">
+            <state line="68" column="0" selection-start="2396" selection-end="2396" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductCategoryController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/ProductCategoryController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="0" selection-start="2044" selection-end="2044" vertical-scroll-proportion="-15.666667">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="18" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/ProductCategory/update.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="6" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductCategory.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/ProductCategory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="38" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/Products/list.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="0" selection-start="2096" selection-end="2096" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/ProductCategory/list.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="71" selection-start="176" selection-end="176" vertical-scroll-proportion="-2.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2014_04_08_083437_create_product_details_table.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="5" selection-start="766" selection-end="766" vertical-scroll-proportion="0.6744604">
               <folding />
             </state>
           </provider>
@@ -166,22 +176,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/Products/add.blade.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_04_07_102018_create_client_suppliers.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_04_02_061806_create_users_table.php" />
-        <option value="$PROJECT_DIR$/app/views/Users/add.blade.php" />
-        <option value="$PROJECT_DIR$/app/models/User.php" />
         <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/views/Users/list.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/ClientSupplierController.php" />
-        <option value="$PROJECT_DIR$/app/views/layouts.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/Products/list.blade.php" />
-        <option value="$PROJECT_DIR$/app/models/ProductCategory.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/models/ProductDetail.php" />
         <option value="$PROJECT_DIR$/app/controllers/ProductController.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/views/layouts.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/ProductCategory/add.blade.php" />
         <option value="$PROJECT_DIR$/app/models/Product.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php" />
+        <option value="$PROJECT_DIR$/app/models/ProductCategory.php" />
+        <option value="$PROJECT_DIR$/app/views/Products/list.blade.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/views/ProductCategory/update.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/ProductCategoryController.php" />
+        <option value="$PROJECT_DIR$/app/views/ProductCategory/list.blade.php" />
       </list>
     </option>
   </component>
@@ -279,7 +289,171 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserTypes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Products" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductCategory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,11 +467,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views" />
+      <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/views/Products" />
-      <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/app/views/Clientsuppliers" />
-      <recent name="$PROJECT_DIR$/app/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/views" />
@@ -337,6 +511,11 @@
       <created>1396174242815</created>
       <updated>1396174242815</updated>
     </task>
+    <task id="LOCAL-00001" summary="second commit">
+      <created>1397108131369</created>
+      <updated>1397108131369</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -347,7 +526,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21354581" sideWeight="0.99839485" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21673307" sideWeight="0.99839485" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -357,6 +536,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -404,7 +584,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -418,6 +598,7 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="second commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -425,108 +606,104 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/Products/add.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/models/Country.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="35" selection-start="5805" selection-end="5805" vertical-scroll-proportion="-12.583333" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_080621_create_products_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="7" selection-start="205" selection-end="205" vertical-scroll-proportion="-1.875" />
+        <state line="20" column="9" selection-start="391" selection-end="391" vertical-scroll-proportion="-12.5" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="21" selection-start="8804" selection-end="8804" vertical-scroll-proportion="-14.458333" />
+        <state line="186" column="4" selection-start="8835" selection-end="8835" vertical-scroll-proportion="-17.291666" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Clientsuppliers/details.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/views/ProductCategory/add.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="666" selection-end="666" vertical-scroll-proportion="0.0">
+        <state line="11" column="68" selection-start="417" selection-end="417" vertical-scroll-proportion="-6.875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_083205_create_product_categories_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/ProductDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="1" selection-start="275" selection-end="275" vertical-scroll-proportion="-8.75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="3" selection-start="932" selection-end="1045" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Products/list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="31" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_083205_create_product_categories_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="5" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ClientSupplierController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="8" selection-start="3987" selection-end="4043" vertical-scroll-proportion="0.0">
+        <state line="54" column="0" selection-start="2096" selection-end="2096" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/ProductCategory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="150" selection-end="150" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/ProductDetail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="8" selection-start="130" selection-end="130" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/ClientSupplier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="1" column="38" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="7" selection-start="1018" selection-end="1044" vertical-scroll-proportion="-22.5">
+        <state line="138" column="32" selection-start="4200" selection-end="4200" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/ClientSupplierController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="262" selection-end="289" vertical-scroll-proportion="-6.875">
+        <state line="68" column="0" selection-start="2396" selection-end="2396" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="18" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/ProductCategory/update.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="6" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ProductCategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="2044" selection-end="2044" vertical-scroll-proportion="-15.666667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1933" selection-end="1933" vertical-scroll-proportion="-10.041667">
+        <state line="69" column="5" selection-start="2067" selection-end="2067" vertical-scroll-proportion="-40.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/app/views/ProductCategory/list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
+        <state line="4" column="71" selection-start="176" selection-end="176" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Product.php">
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_04_08_083437_create_product_details_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.010380623">
+        <state line="26" column="5" selection-start="766" selection-end="766" vertical-scroll-proportion="0.6744604">
           <folding />
         </state>
       </provider>

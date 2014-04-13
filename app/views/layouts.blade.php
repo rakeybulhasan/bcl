@@ -184,6 +184,24 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         </ul>
     </li>
 
+    <li class="@if (Request::is('categories/*'))active@endif">
+        <a href="javascript:;">
+            <i class="fa fa-gift"></i>
+            <span class="title">Product Category</span>
+            @if (Request::is('categories/*'))<span class="selected"></span>@endif
+            <span class="arrow @if (Request::is('categories/*'))open@endif"></span>
+        </a>
+        <ul class="sub-menu">
+                <li @if (Request::is('categories/add'))class="active"@endif>
+                <a href="{{ URL::to('categories/add') }}">Add Category </a>
+                </li>
+                <li @if (Request::is('categories/list'))class="active"@endif>
+                <a href="{{ URL::to('categories/index') }}">Category List </a>
+                </li>
+
+        </ul>
+    </li>
+
 </ul>
 <!-- END SIDEBAR MENU -->
 </div>

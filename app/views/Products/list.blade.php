@@ -26,7 +26,6 @@
                 <th>Description</th>
                 <th>Price</th>
                 <th>Commission</th>
-                <th>Details</th>
                 <th>update</th>
                 <th>Delete</th>
             </tr>
@@ -37,15 +36,13 @@
 
                 <td> {{Form::checkbox('sex',1,false,array('class'=>'checkboxes','value'=>1))}}</td>
                 <td> {{ $value->product_name }}</td>
-                <td> {{ $value->category_name }}</td>
+                <td>@foreach($value->productdetails()->get() as $categories) {{ $aa[]=$categories['product_category_id'] }}@endforeach
+                </td>
                 <td> {{ $value->description }}</td>
                 <td> {{ $value->price }}</td>
                 <td> {{ $value->commission }}</td>
-                <td> <a href="{{ URL::to('products/details/'.$value->id)}}"> {{$value->id}}Details</a></td>
                 <td> <a href="{{ URL::to('products/update/'.$value->id)}}">Update</a></td>
                 <td> <a href="{{ URL::to('products/delete/'.$value->id)}}">Delete</a></td>
-
-
 
             </tr>
             @endforeach
@@ -67,8 +64,7 @@
                 null,
                 null,
                 null,
-                { "bSortable": false },
-                { "bSortable": false },
+                null,
                 { "bSortable": false },
                 { "bSortable": false }
             ],

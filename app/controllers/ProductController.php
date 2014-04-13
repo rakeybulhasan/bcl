@@ -9,8 +9,9 @@ class ProductController extends BaseController{
 
     public function getIndex()
     {
-
-        $products = Product::all();
+        //Project::with('tasks')->get();
+        $products = Product::with('productdetails')
+                            ->get();
         //var_dump($products);
         return View::make('Products.list')
             ->with('list',$products);
@@ -78,7 +79,6 @@ class ProductController extends BaseController{
     {
         $del = Product::find($id);
         $del->delete();
-        die();
         return Redirect::to('products/index');
     }
 
