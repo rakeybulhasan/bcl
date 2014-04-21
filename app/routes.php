@@ -16,6 +16,7 @@
 	return View::make('hello');
 });*/
 Route::get('/','UserController@getIndex');
+Route::get('users/login','UserController@getIndex');
 Route::controller('users','UserController');
 Route::put('checkupdate/{$id}','UserController@putCheckupdate');
 Route::controller('clientsuppliers', 'ClientSupplierController');

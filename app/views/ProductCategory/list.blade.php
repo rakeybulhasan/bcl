@@ -90,6 +90,8 @@
     jQuery('#sample_3_wrapper .dataTables_filter input').addClass("form-control input-small"); // modify table search input
     jQuery('#sample_3_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
     jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+        var success1 = $('.alert-success');
+        success1.fadeOut(5000);
     });
     @stop
 </script>

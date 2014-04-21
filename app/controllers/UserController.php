@@ -1,9 +1,18 @@
+
+
 <?php
 
 
 class UserController extends BaseController {
+
+    public function __construct()
+    {
+        $this->beforeFilter('auth',array('only' => array('getAdd','getUserlist','getUsertypeadd','postSaveuser','getDetails','getUpdate','putCheckupdate','getStatusdeactive','getStatusactive')));
+        // $this->beforeFilter('admin');
+    }
     public function getIndex()
     {
+
         return View::make('login.index');
     }
     public function postChecklogin()
@@ -19,31 +28,38 @@ class UserController extends BaseController {
         }
         else{
             $email = Input::get('email');
-            if(Auth::attempt(array('email'=>Input::get('email'),'password'=>Input::get('password'))))
+            if(Auth::attempt(array('email'=>Input::get('email'),'password'=>Input::get('password'),'status' => 1)))
             {
-                Session::put('email',$email);
+                $user = User::where('email','=',$email)->get();
+                Session::put('user_type',$user[0]->group_id);
+               // $name = $user[0]->first_name.' '.$user[0]->last_name;
+                Session::put('created_by',$email);
                 Session::flash('message', 'User has been Successfully Login.');
                 return    Redirect::to('users/userlist/');
             }
             else
             {
+                Session::flash('message', 'Your username or password incorrect');
                 return   Redirect::to('users/index');
             }
         }
     }
     public function getAdd()
     {
-   // return View::make('Users.add');
         $countries = new Country;
-
         return View::make('Users.add')
             ->with('country', $countries->getCountriesDropDown());
-    }
 
+    }
+    public function getUsertypeadd()
+    {
+        return View::make('UserTypes.add');
+
+    }
     public function getUserlist()
     {
-        $user = User::all();
 
+        $user = User::all();
         return View::make('Users.list')
             ->with('users',$user);
     }
@@ -57,11 +73,10 @@ class UserController extends BaseController {
 
     public function postSaveuser()
     {
-
         $ruless = array(
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' =>  'required|email|unique:users',
+            'email' =>  'required|email|unique:users|Unique:users',
             'password' => 'required'
         );
         $validate = Validator::make(Input::all(), $ruless);
@@ -90,13 +105,24 @@ class UserController extends BaseController {
             return Redirect::to('users/userlist/');
         }
     }
+    public function getUpdate($id)
+    {
+        $countries = new Country;
+        $types = new UserType;
+        $user = User::find($id);
+        return View::make('Users.update')
+            ->with('userdata',$user)
+            ->with('country', $countries->getCountriesDropDown())
+            ->with('type',$types->getuser_typesDropdown());
+
+    }
 
     public function putCheckupdate($id)
     {
         $ruless = array(
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' =>  'required|email|unique:users,email,'.$id
+            'email' =>  'required|email|Unique:users,email,'.$id
 
         );
         $validate = Validator::make(Input::all(), $ruless);
@@ -125,15 +151,7 @@ class UserController extends BaseController {
             return Redirect::to('users/userlist/');
         }
     }
-    public function getUpdate($id)
-    {
-        $countries = new Country;
-        $user = User::find($id);
-        return View::make('Users.update')
-            ->with('userdata',$user)
-            ->with('country', $countries->getCountriesDropDown());
 
-    }
     public function getDetails($id)
     {
         $user = User::find($id);
@@ -141,20 +159,28 @@ class UserController extends BaseController {
             ->with('userdata',$user);
 
     }
-
-    public function deleteDestroy($id)
+    public function getStatusdeactive($id)
     {
+        $status = 0;
         $user = User::find($id);
-        $user->delete();
-        Session::flash('message', 'User has been Successfully Deleted.');
-        return Redirect::to('users/userlist');
-    }
-    public function getDelete($id)
-    {
-        $usertype = User::find($id);
-        $usertype->delete();
-        Session::flash('message', 'User has been Successfully Deleted.');
-        return Redirect::to('users/userlist');
-    }
+        $user->status = $status;
+        $user->save();
+        Session::flash('message', 'User has been Successfully Deactivated.');
+        return Redirect::to('users/userlist/');
+
+    }public function getStatusactive($id)
+{
+    $status = 1;
+    $user = User::find($id);
+    $user->status = $status;
+    $user->save();
+    Session::flash('message', 'User has been Successfully Activated.');
+    return Redirect::to('users/userlist/');
 
 }
+
+
+}
+
+
+

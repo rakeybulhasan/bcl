@@ -1,7 +1,10 @@
 <?php
 
 class ClientSupplierController extends BaseController{
-
+    public function __construct()
+    {
+        $this->beforeFilter('admin');
+    }
     public function getIndex()
     {
         return 'ok';
@@ -133,6 +136,43 @@ class ClientSupplierController extends BaseController{
         $person = ClientSupplier::find($id);
         $person->delete();
         return Redirect::to('clientsuppliers/clientlist');
+    }
+    public function getStatusdeactive($id)
+    {
+        $status = 0;
+        $clients = ClientSupplier::find($id);
+        $clients->status = $status;
+        $clients->save();
+        if($clients->group_id == 1)
+        {
+            Session::flash('message', 'Client has been Successfully Deactivated.');
+            return Redirect::to('clientsuppliers/clientlist/');
+        }
+        else
+        {
+            Session::flash('message', 'Supplier has been Successfully Deactivated.');
+            return Redirect::to('clientsuppliers/supplierlist/');
+        }
+
+
+    }
+    public function getStatusactive($id)
+    {
+        $status = 1;
+        $clients = ClientSupplier::find($id);
+        $clients->status = $status;
+        $clients->save();
+        if($clients->group_id == 1)
+        {
+            Session::flash('message', 'Client has been Successfully Activated.');
+            return Redirect::to('clientsuppliers/clientlist/');
+        }
+        else
+        {
+            Session::flash('message', 'Supplier has been Successfully Activated.');
+            return Redirect::to('clientsuppliers/supplierlist/');
+        }
+
     }
 
 }

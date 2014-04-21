@@ -3,9 +3,10 @@
 
 <div class="portlet box purple">
     <div class="portlet-title">
-        <div class="caption"><i class="fa fa-cogs"></i>@if($lists != null){{($lists[0]->group_id==2)?'Supplier List':'Client List'}}@endif </div>
+
+        <div class="caption"><i class="fa fa-cogs"></i>@if (Request::is('clientsuppliers/supplierlist'))Supplier List @else Client List @endif </div>
         <div class="actions">
-            <a href="{{ URL::to('clientsuppliers/add') }}" class="btn green"><i class="fa fa-plus"></i> {{($lists[0]->group_id==2)?'Add Supplier':'Add Client'}}</a>
+            <a href="{{ URL::to('clientsuppliers/add') }}" class="btn green"><i class="fa fa-plus"></i> @if (Request::is('clientsuppliers/supplierlist'))Add Supplier @else Add Client @endif</a>
             <!--            <a href="table_managed.html#" class="btn yellow"><i class="fa fa-print"></i> Print</a>-->
         </div>
     </div>
@@ -16,7 +17,6 @@
             {{ Session::get('message') }}
         </div>
         @endif
-
         <table class="table table-striped table-bordered table-hover" id="sample_3">
             <thead>
             <tr>
@@ -27,9 +27,10 @@
                 <th>Country</th>
                 <th>Comapny name</th>
                 <th>Type</th>
+                <th>Status</th>
                 <th>Details</th>
                 <th>update</th>
-                <th>Delete</th>
+
             </tr>
             </thead>
             <tbody>
@@ -41,12 +42,25 @@
                 <td> {{ $value->email }}</td>
                 <td> {{ $value->phone }}</td>
                 <td> {{ $value->country->name }}</td>
-
                 <td> {{ $value->company_name }}</td>
                 <td> {{($value->group_id==2)?'Supplier':'Client'}}</td>
+                @if($value->status == 1)
+                @if(Session::get('user_type') == 1)
+                <td> <a href="{{ URL::to('clientsuppliers/statusdeactive/'.$value->id)}}">Active</a></td>
+                @else
+                <td>Active</td>
+                @endif
+                @else
+                @if(Session::get('user_type') == 1)
+                <td > <a href="{{ URL::to('clientsuppliers/statusactive/'.$value->id)}}"><span class="label label-sm label-danger">Deactive</span></a></td>
+                @else
+                <td><span class="label label-sm label-danger">Deactive</span></td>
+                @endif
+                @endif
+
                 <td> <a href="{{ URL::to('clientsuppliers/details/'.$value->id)}}">Details</a></td>
                 <td> <a href="{{ URL::to('clientsuppliers/update/'.$value->id)}}">Update</a></td>
-                <td> <a href="{{ URL::to('clientsuppliers/delete/'.$value->id)}}">Delete</a></td>
+
 
 
 
@@ -55,6 +69,7 @@
 
             </tbody>
         </table>
+
     </div>
 </div>
 
@@ -113,7 +128,7 @@
         jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
         //var form1 = $('#user_update_form');
         var success1 = $('.alert-success');
-        success1.hide(10000);
+        success1.fadeOut(5000);
     });
     @stop
 </script>

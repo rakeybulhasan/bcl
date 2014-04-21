@@ -25,9 +25,9 @@
                 <th>Phone</th>
                 <th>Country</th>
                 <th>User Type</th>
+                <th>Status</th>
                 <th>Details</th>
                 <th>update</th>
-                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -39,10 +39,23 @@
                 <td> {{ $value->email }}</td>
                 <td> {{ $value->phone }}</td>
                 <td> {{ $value->country->name }}</td>
-                <td> {{($value->group_id==1)?'Admin':'Manager'}}</td>
+                <td>  {{($value->group_id == 1)?'Admin':'Manager'}}</td>
+                @if($value->status == 1)
+                @if(Session::get('user_type') == 1)
+                <td> <a href="{{ URL::to('users/statusdeactive/'.$value->id)}}">Active</a></td>
+                @else
+                <td>Active</td>
+                @endif
+                @else
+                @if(Session::get('user_type') == 1)
+                <td > <a href="{{ URL::to('users/statusactive/'.$value->id)}}"><span class="label label-sm label-danger">Deactive</span></a></td>
+                @else
+                <td><span class="label label-sm label-danger">Deactive</span></td>
+                @endif
+                @endif
+
                 <td> <a href="{{ URL::to('users/details/'.$value->id)}}">Details</a></td>
                 <td> <a href="{{ URL::to('users/update/'.$value->id)}}">Update</a></td>
-                <td> <a href="{{ URL::to('users/delete/'.$value->id)}}">Delete</a></td>
 
 
 
@@ -92,24 +105,24 @@
         ]
     });
 
-    jQuery('#sample_3 .group-checkable').change(function () {
-        var set = jQuery(this).attr("data-set");
-        var checked = jQuery(this).is(":checked");
-        jQuery(set).each(function () {
-            if (checked) {
-                $(this).attr("checked", true);
-            } else {
-                $(this).attr("checked", false);
-            }
+        jQuery('#sample_3 .group-checkable').change(function () {
+            var set = jQuery(this).attr("data-set");
+            var checked = jQuery(this).is(":checked");
+            jQuery(set).each(function () {
+                if (checked) {
+                    $(this).attr("checked", true);
+                } else {
+                    $(this).attr("checked", false);
+                }
+            });
+            jQuery.uniform.update(set);
         });
-        jQuery.uniform.update(set);
-    });
-    jQuery('#sample_3_wrapper .dataTables_filter input').addClass("form-control input-small"); // modify table search input
-    jQuery('#sample_3_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
-    jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+        jQuery('#sample_3_wrapper .dataTables_filter input').addClass("form-control input-small"); // modify table search input
+        jQuery('#sample_3_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
+        jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
         //var form1 = $('#user_update_form');
         var success1 = $('.alert-success');
-        success1.hide(10000);
+        success1.fadeOut(5000);
     })
     @stop
 </script>

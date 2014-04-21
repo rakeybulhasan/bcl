@@ -6,12 +6,13 @@
  * Time: 2:49 PM
  */
 class ProductCategoryController extends BaseController{
-
+    public function __construct()
+    {
+        $this->beforeFilter('admin');
+    }
     public function getIndex()
     {
-        //Project::with('tasks')->get();
         $productcategories = ProductCategory::all();
-        //var_dump($products);
         return View::make('ProductCategory.list')
             ->with('list',$productcategories);
     }

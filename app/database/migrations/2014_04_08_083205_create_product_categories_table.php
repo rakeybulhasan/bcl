@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProductCategoriesTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
     /**
      * Run the migrations.
      *
@@ -20,10 +15,15 @@ class CreateProductCategoriesTable extends Migration {
         Schema::create('product_categories', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('category_name',100);
-            $table->string('user_name',100);
+            $table->string('category_name',200);
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->integer('parent_id');
+            $table->float('price',10,2);
+            $table->float('commission',10,2);
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 
@@ -36,6 +36,5 @@ class CreateProductCategoriesTable extends Migration {
     {
         Schema::drop('product_categories');
     }
-
 
 }

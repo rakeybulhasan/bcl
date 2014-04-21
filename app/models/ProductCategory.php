@@ -1,6 +1,7 @@
 <?php
 class ProductCategory extends Eloquent
 {
+    protected $table = 'product_categories';
     public function productdetail()
     {
         return $this->hasMany('ProductDetail');
@@ -10,5 +11,10 @@ class ProductCategory extends Eloquent
     {
         $this->productdetail()->delete();
         return parent::delete();
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('Product');
     }
 }

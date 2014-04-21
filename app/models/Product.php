@@ -42,5 +42,10 @@ class Product extends Eloquent
         $this->productdetails()->delete();
         return parent::delete();
     }
+    public function productcategories()
+    {
+        return $this->hasMany('ProductCategory');
+    }
+
 
 }

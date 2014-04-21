@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProductsTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
     /**
      * Run the migrations.
      *
@@ -20,11 +15,9 @@ class CreateProductsTable extends Migration {
         Schema::create('products', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('user_name',100);
             $table->string('product_name',100);
             $table->text('description');
-            $table->float('price',10,2);
-            $table->float('commission',10,2);
+            $table->string('created_by',200);
             $table->timestamps();
             $table->softDeletes();
         });

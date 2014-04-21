@@ -19,7 +19,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <meta content="" name="author" />
     <meta name="MobileOptimized" content="320">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    {{ HTML::style('assets/plugins/font-awesome/css/font-awesome.min.css') }}
+
     <link href="{{URL::asset('assets/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ URL::asset('assets/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css"/>
@@ -67,23 +67,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <li class="dropdown user">
     <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <img alt="" src="{{URL::asset('assets/css/custom.css')}}"/>
-        <span class="username">Bob Nilson</span>
+        <span class="username">{{Session::get('user_name');}}</span>
         <i class="fa fa-angle-down"></i>
     </a>
     <ul class="dropdown-menu">
-        <li><a href="extra_profile.html"><i class="fa fa-user"></i> My Profile</a>
-        </li>
-        <li><a href="page_calendar.html"><i class="fa fa-calendar"></i> My Calendar</a>
-        </li>
-        <li><a href="inbox.html"><i class="fa fa-envelope"></i> My Inbox <span class="badge badge-danger">3</span></a>
-        </li>
-        <li><a href="index.html#"><i class="fa fa-tasks"></i> My Tasks <span class="badge badge-success">7</span></a>
-        </li>
-        <li class="divider"></li>
-        <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> Full Screen</a>
-        </li>
-        <li><a href="extra_lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
-        </li>
+
         <li><a href="{{ URL::to('users/logout') }}"><i class="fa fa-key"></i> Log Out</a>
         </li>
     </ul>

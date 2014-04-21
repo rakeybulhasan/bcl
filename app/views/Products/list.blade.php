@@ -1,6 +1,10 @@
 @extends('layouts')
 @section('content')
-
+<style>
+    table select{
+        width: 100%;
+    }
+</style>
 <div class="portlet box purple">
     <div class="portlet-title">
         <div class="caption"><i class="fa fa-cogs"></i>Product List</div>
@@ -22,10 +26,11 @@
             <tr>
                 <th class="table-checkbox"><input type="checkbox" class="group-checkable" data-set="#sample_3 .checkboxes" /></th>
                 <th>Product Name</th>
-                <th>Category Name</th>
                 <th>Description</th>
+                <th>Category Name</th>
                 <th>Price</th>
                 <th>Commission</th>
+
                 <th>update</th>
                 <th>Delete</th>
             </tr>
@@ -36,11 +41,36 @@
 
                 <td> {{Form::checkbox('sex',1,false,array('class'=>'checkboxes','value'=>1))}}</td>
                 <td> {{ $value->product_name }}</td>
-                <td>@foreach($value->productdetails()->get() as $categories) {{ $aa[]=$categories['product_category_id'] }}@endforeach
-                </td>
                 <td> {{ $value->description }}</td>
-                <td> {{ $value->price }}</td>
-                <td> {{ $value->commission }}</td>
+                <td>
+                    <select name="company_id" class="form-control">
+
+                      @foreach($value->productcategories()->get() as $id=>$categories)
+                            <option value="<?php echo $categories['product_id'] ?>"> <?php echo ($categories['category_name']!='')?  $categories['category_name']:'Not available' ?> </option>
+                      @endforeach
+
+                    </select>
+
+                </td>
+                <td>
+                    <select name="company_id" class="form-control">
+
+                      @foreach($value->productcategories()->get() as $id=>$categories)
+                            <option value="<?php echo $categories['product_id'] ?>"> <?php echo $categories['price'] ?> </option>
+                      @endforeach
+
+                    </select>
+                </td>
+                <td>
+                    <select name="company_id" class="form-control">
+
+                      @foreach($value->productcategories()->get() as $id=>$categories)
+                            <option value="<?php echo $categories['product_id'] ?>"> <?php echo $categories['commission'] ?> </option>
+                      @endforeach
+
+                    </select>
+                </td>
+
                 <td> <a href="{{ URL::to('products/update/'.$value->id)}}">Update</a></td>
                 <td> <a href="{{ URL::to('products/delete/'.$value->id)}}">Delete</a></td>
 
@@ -61,10 +91,11 @@
             "aoColumns": [
                 { "bSortable": false },
                 null,
-                null,
-                null,
-                null,
-                null,
+
+                { "bSortable": false },
+                { "bSortable": false },
+                { "bSortable": false },
+                { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false }
             ],
@@ -106,7 +137,7 @@
         jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
         //var form1 = $('#user_update_form');
         var success1 = $('.alert-success');
-        success1.hide(10000);
+        success1.fadeOut(5000);
     })
     @stop
 </script>
