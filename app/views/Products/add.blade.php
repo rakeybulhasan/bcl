@@ -35,7 +35,7 @@
                             {{Form::radio('yes_no',1,false,array('class' => 'yes_no'))}}  {{Form::label('Yes')}}
                         </label>
                         <label>
-                            {{Form::radio('yes_no',0,false,array('class' => 'yes_no'))}}  {{Form::label('No')}}
+                            {{Form::radio('yes_no',0,true,array('class' => 'yes_no'))}}  {{Form::label('No')}}
                         </label>
 
                     </div>
@@ -43,37 +43,45 @@
             </div>
             <div class="form-group category">
                 {{Form::label('category_name','Category Name', array('class' => 'control-label col-md-3'))}}
-                <div class="col-md-4" id="category_list">
-                    <div style="text-align:left" class="input-group">
+                <div class="col-md-9">
+                    <div class="col-md-3" style="padding-right: 0;padding-left: 0">
                         {{Form::text('category_name',null,array('placeholder' => 'Category name', 'class' => 'form-control','id' => 'category_name'))}}
-                        {{Form::text('category_price',null,array('placeholder' => 'Category price', 'class' => 'form-control','id' => 'category_price'))}}
-                        {{Form::text('category_commission',null,array('placeholder' => 'Category Commission', 'class' => 'form-control','id' => 'category_commission'))}}
+                    </div>
+                    <div class="col-md-2" id="" style="padding-right: 0">
+                        {{Form::text('category_price',null,array('placeholder' => 'Price', 'class' => 'form-control','id' => 'category_price'))}}
+                    </div>
+                    <div class="col-md-2" id="" style="padding-right: 0">
+                        {{Form::text('category_commission',null,array('placeholder' => 'Commission', 'class' => 'form-control','id' => 'category_commission'))}}
+                    </div>
+                    <div class="col-md-2" id="" style="padding-right: 0">
 												<span class="input-group-btn" style="padding-left: 5px">
 												<a id="category_add" class="btn green" href="javascript:;"> Add</a>
 												</span>
                     </div>
                 </div>
             </div>
+
+                <div class="form-group price_commission">
+                    {{Form::label('category_name','Product Price', array('class' => 'control-label col-md-3'))}}
+                    <div class="col-md-9">
+                        <div class="col-md-2" id="" style="padding-right: 0; padding-left: 0">
+                            {{Form::text('category_price',null,array('placeholder' => 'Price', 'class' => 'form-control','id' => 'category_price'))}}
+                        </div>
+                        <div class="col-md-2" id="" style="padding-right: 0">
+                            {{Form::text('category_commission',null,array('placeholder' => 'Commission', 'class' => 'form-control','id' => 'category_commission'))}}
+                        </div>
+
+                    </div>
+                </div>
+
+
             <div class="form-group">
                 {{HTML::decode(Form::label('description','Description',array('class' => 'control-label col-md-3')))}}
                 <div class="col-md-4">
                     {{Form::textarea('description',null,array('class' => 'form-control','id' => 'description', 'rows'=>'3'))}}
                 </div>
             </div>
-            <div class="price_commission">
-                <div class="form-group">
-                    {{HTML::decode(Form::label('price','Price',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4 pricing-head">
-                        {{Form::text('price','100',array('placeholder' => 'Price', 'class' => 'form-control','id' => 'price'))}}
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{HTML::decode(Form::label('commission','Commission',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        {{Form::text('commission',5.00,array('placeholder' => 'Commission', 'class' => 'form-control','id' => 'commission'))}}
-                    </div>
-                </div>
-            </div>
+
 
             <div class="form-actions fluid">
                 <div class="col-md-offset-3 col-md-9">

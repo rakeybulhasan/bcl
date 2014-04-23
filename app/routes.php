@@ -24,3 +24,6 @@ Route::post('checkupdate/{$id}','ClientSupplierController@postCheckupdate');
 Route::controller('products', 'ProductController');
 Route::controller('categories', 'ProductCategoryController');
 Route::post('checkupdate/{$id}','ProductCategoryController@putCategoryupdate');
+Route::post('checkupdate/{$id}','ProductController@putProductupdate');
+Route::post('category', 'ProductController@getCategoryById');
+Route::post('categoryDelete', 'ProductController@getDeleteCategoryById');

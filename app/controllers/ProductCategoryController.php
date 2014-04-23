@@ -84,4 +84,5 @@ class ProductCategoryController extends BaseController{
         return Redirect::to('categories/index');
     }
 
+
 }

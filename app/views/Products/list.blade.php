@@ -43,32 +43,22 @@
                 <td> {{ $value->product_name }}</td>
                 <td> {{ $value->description }}</td>
                 <td>
-                    <select name="company_id" class="form-control">
+                    <select name="category_id" class="form-control category_id">
 
-                      @foreach($value->productcategories()->get() as $id=>$categories)
-                            <option value="<?php echo $categories['product_id'] ?>"> <?php echo ($categories['category_name']!='')?  $categories['category_name']:'Not available' ?> </option>
+                      @foreach($value->productcategories as $id=>$categories)
+                            <option value="<?php echo $categories['id'] ?>"> <?php echo ($categories['category_name']!='')?  $categories['category_name']:'Not available' ?> </option>
                       @endforeach
 
                     </select>
 
                 </td>
                 <td>
-                    <select name="company_id" class="form-control">
 
-                      @foreach($value->productcategories()->get() as $id=>$categories)
-                            <option value="<?php echo $categories['product_id'] ?>"> <?php echo $categories['price'] ?> </option>
-                      @endforeach
+                 <input type="text" class="form-control price" name="price" value="">
 
-                    </select>
                 </td>
                 <td>
-                    <select name="company_id" class="form-control">
-
-                      @foreach($value->productcategories()->get() as $id=>$categories)
-                            <option value="<?php echo $categories['product_id'] ?>"> <?php echo $categories['commission'] ?> </option>
-                      @endforeach
-
-                    </select>
+                    <input type="text" class="form-control commission" name="commission" value="">
                 </td>
 
                 <td> <a href="{{ URL::to('products/update/'.$value->id)}}">Update</a></td>
@@ -138,6 +128,33 @@
         //var form1 = $('#user_update_form');
         var success1 = $('.alert-success');
         success1.fadeOut(5000);
+
+
+        $('.category_id').on("focus blur change", function () {
+
+            perticularTaskResult(jQuery(this));
+        });
+
+        function perticularTaskResult(elm) {
+            var category_id = elm.val();
+
+            $.ajax({
+
+                type: "post",
+                url: "{{ URL::to('category') }}",
+
+                data: "category_id=" + category_id,
+                dataType: "json",
+                async: false,
+                success: function (msg) {
+                    elm.closest('tr').find('.price').val(msg.price);
+                    elm.closest('tr').find('.commission').val(msg.commission);
+
+                }
+            });
+
+        }
+
     })
     @stop
 </script>
