@@ -5,17 +5,19 @@
  * Date: 4/8/14
  * Time: 2:49 PM
  */
-class ProductController extends BaseController{
+class ProductController extends BaseController
+{
     public function __construct()
     {
         $this->beforeFilter('admin');
     }
+
     public function getIndex()
     {
         $products = Product::all();
 
         return View::make('Products.list')
-            ->with('list',$products);
+            ->with('list', $products);
     }
 
     public function getAdd()
@@ -32,45 +34,40 @@ class ProductController extends BaseController{
         );
         $validate = Validator::make(Input::all(), $ruless);
 
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             return Redirect::to('products/add')
                 ->withErrors($validate);
-        }
-        else{
+        } else {
             $product = new Product;
             $product_categories = new ProductCategory;
 
-            $product->product_name  = Input::get('product_name');
+            $product->product_name = Input::get('product_name');
             $product->created_by = Session::get('created_by');
             $product->description = Input::get('description');
             $yes_no = Input::get('yes_no');
-            if($yes_no == 0)
-            {
-                if($product->save())
-                {
+            if ($yes_no == 0) {
+                if ($product->save()) {
                     $product_categories->product_id = $product->id;
                     $product_categories->parent_id = 0;
                     $product_categories->price = Input::get('price');
                     $product_categories->commission = Input::get('commission');
                 }
                 $product_categories->save();
-            }
-            else{
+            } else {
 
-                if($product->save()){
+                if ($product->save()) {
 
-                    $categories_name=Input::get('category_name');
-                    $categories_price=Input::get('category_price');
-                    $categories_commission=Input::get('category_commission');
-                    if(!empty($categories_name)){
-                        foreach($categories_name as $key=>$category_name){
+                    $categories_name = Input::get('category_name');
+                    $categories_price = Input::get('category_price');
+                    $categories_commission = Input::get('category_commission');
+                    if (!empty($categories_name) && is_array($categories_name)) {
+                        foreach ($categories_name as $key => $category_name) {
                             $product_categories = new ProductCategory;
                             $product_categories->product_id = $product->id;
                             $product_categories->parent_id = $key;
-                            $product_categories->category_name=$category_name;
-                            $product_categories->price=$categories_price[$key];
-                            $product_categories->commission=$categories_commission[$key];
+                            $product_categories->category_name = $category_name;
+                            $product_categories->price = $categories_price[$key];
+                            $product_categories->commission = $categories_commission[$key];
                             $product_categories->save();
                         }
                     }
@@ -83,6 +80,7 @@ class ProductController extends BaseController{
         }
 
     }
+
     public function putProductupdate($id)
     {
         $ruless = array(
@@ -91,50 +89,45 @@ class ProductController extends BaseController{
         );
         $validate = Validator::make(Input::all(), $ruless);
 
-        if($validate->fails())
-        {
-            return Redirect::to('products/update/'.$id)
+        if ($validate->fails()) {
+            return Redirect::to('products/update/' . $id)
                 ->withErrors($validate);
-        }
-        else{
+        } else {
             $product = Product::find($id);
 
-            $product->product_name  = Input::get('product_name');
+            $product->product_name = Input::get('product_name');
             $product->created_by = Session::get('created_by');
             $product->description = Input::get('description');
             $yes_no = Input::get('yes_no');
-            if($yes_no == 0)
-            {
-                if($product->save())
-                {
+            if ($yes_no == 0) {
+                if ($product->save()) {
                     ProductCategory::where('product_id', '=', $id)->delete();
                     $product_categories = new ProductCategory;
                     $product_categories->product_id = $product->id;
                     $product_categories->parent_id = 0;
-                    $price=Input::get('price');
-                    $product_price=Input::get('product_price');
-                    $product_categories->price = ($price) ? $price:$product_price;
-                    $commission=Input::get('commission');
-                    $product_commission=Input::get('product_commission');
-                    $product_categories->commission = ($commission) ? $commission:$product_commission;
+                    $price = Input::get('price');
+                    $product_price = Input::get('product_price');
+                    $product_categories->price = ($price) ? $price : $product_price;
+                    $commission = Input::get('commission');
+                    $product_commission = Input::get('product_commission');
+                    $product_categories->commission = ($commission) ? $commission : $product_commission;
                     $product_categories->save();
                 }
-            }
-            else{
+            } else {
 
-                if($product->save()){
+                if ($product->save()) {
                     ProductCategory::where('product_id', '=', $id)->delete();
-                    $categories_name=Input::get('category_name');
-                    $categories_price=Input::get('category_price');
-                    $categories_commission=Input::get('category_commission');
-                    if(!empty($categories_name)){
-                        foreach($categories_name as $key=>$category_name){
-                            $product_categories =new ProductCategory;
+                    $categories_name = Input::get('category_name');
+                    $categories_price = Input::get('category_price');
+                    $categories_commission = Input::get('category_commission');
+                    if (!empty($categories_name)) {
+                        foreach ($categories_name as $key => $category_name) {
+                            $product_categories = new ProductCategory;
                             $product_categories->product_id = $product->id;
                             $product_categories->parent_id = $key;
-                            $product_categories->category_name=$category_name;
-                            $product_categories->price=$categories_price[$key];
-                            $product_categories->commission=$categories_commission[$key];
+                            $product_categories->category_name = $category_name;
+                            $product_categories->price = $categories_price[$key];
+                            $product_categories->commission = $categories_commission[$key];
                             $product_categories->save();
                         }
                     }
@@ -150,10 +143,29 @@ class ProductController extends BaseController{
     {
         $info = Product::find($id);
         return View::make('Products.update')
-            ->with('productdata',$info);
+            ->with('productdata', $info);
 
 
     }
+
+    public function categoryInlineUpdate()
+    {
+        $id = $_POST['category_id'];
+        $productcategory = ProductCategory::find($id);
+        $productcategory->price = $_POST['price'];
+        $productcategory->commission = $_POST['commission'];
+        $productcategory->save();
+        $response_array['success_message'] = 'Product category has been Successfully Updated.';
+        $this->outputAsJSON($response_array);
+
+    }
+
+    protected function outputAsJSON($data)
+    {
+        // header("content-type: application/json");
+        echo json_encode($data);
+    }
+
     public function getCategoryById()
     {
         $id = $_POST['category_id'];
@@ -161,6 +173,7 @@ class ProductController extends BaseController{
         return $info;
 
     }
+
     public function getDeleteCategoryById()
     {
         $id = $_POST['category_id'];

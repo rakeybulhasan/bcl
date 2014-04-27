@@ -7,41 +7,16 @@
  */
 
 
-
 class Product extends Eloquent
 {
     protected $table = 'products';
-    public function getList()
-    {
-      $list = DB::table('products')
-            ->Join('product_details','product_details.product_id','=','products.id')
-            ->Join('product_categories','product_categories.id','=','product_details.product_category_id')
-            ->get();
-
-        return $list;
-    }
-    public function getinfo($id)
-{
-    $list = DB::table('products')
-        ->Join('product_details','products.id','=','product_details.product_id')
-        ->Join('product_categories','product_categories.id','=','product_details.product_category_id')
-        ->where('products.id','=',$id)
-        ->get();
-   // print_r($list) ; exit;
-    return $list;
-}
-
-    public function productdetails()
-    {
-        return $this->hasMany('ProductDetail');
-    }
-
 
     public function delete()
     {
-        $this->productdetails()->delete();
+        $this->productcategories()->delete();
         return parent::delete();
     }
+
     public function productcategories()
     {
         return $this->hasMany('ProductCategory');

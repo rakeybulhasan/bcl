@@ -250,7 +250,7 @@
             if(ans == 1)
             {
                 $('.price_commission').hide();
-                $('.product_price').remove();
+                $('.product_price').hide();
 
                 $('#category_list').fadeIn(1000);
                 $('.category').fadeIn(1000);

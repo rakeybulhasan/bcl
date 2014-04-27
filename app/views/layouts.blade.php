@@ -189,6 +189,23 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
         </ul>
     </li>
+    <li class="@if (Request::is('files/*'))active@endif">
+        <a href="javascript:;">
+            <i class="fa fa-gift"></i>
+            <span class="title">File</span>
+            @if (Request::is('files/*'))<span class="selected"></span>@endif
+            <span class="arrow @if (Request::is('files/*'))open@endif"></span>
+        </a>
+        <ul class="sub-menu">
+            <li @if (Request::is('files/add'))class="active"@endif>
+            <a href="{{ URL::to('files/add') }}">Add File </a>
+    </li>
+    <li @if (Request::is('files/list'))class="active"@endif>
+    <a href="{{ URL::to('files/index') }}">File List </a>
+    </li>
+
+    </ul>
+    </li>
 
 </ul>
 <!-- END SIDEBAR MENU -->

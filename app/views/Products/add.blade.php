@@ -41,9 +41,10 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group category">
+            <div class="form-group category" id="category_list">
+               <div class="list">
                 {{Form::label('category_name','Category Name', array('class' => 'control-label col-md-3'))}}
-                <div class="col-md-9">
+                <div class="col-md-9" style="margin-bottom: 5px">
                     <div class="col-md-3" style="padding-right: 0;padding-left: 0">
                         {{Form::text('category_name',null,array('placeholder' => 'Category name', 'class' => 'form-control','id' => 'category_name'))}}
                     </div>
@@ -59,16 +60,17 @@
 												</span>
                     </div>
                 </div>
+               </div>
             </div>
 
                 <div class="form-group price_commission">
                     {{Form::label('category_name','Product Price', array('class' => 'control-label col-md-3'))}}
                     <div class="col-md-9">
                         <div class="col-md-2" id="" style="padding-right: 0; padding-left: 0">
-                            {{Form::text('category_price',null,array('placeholder' => 'Price', 'class' => 'form-control','id' => 'category_price'))}}
+                            {{Form::text('price',null,array('placeholder' => 'Price', 'class' => 'form-control','id' => 'category_price'))}}
                         </div>
                         <div class="col-md-2" id="" style="padding-right: 0">
-                            {{Form::text('category_commission',null,array('placeholder' => 'Commission', 'class' => 'form-control','id' => 'category_commission'))}}
+                            {{Form::text('commission',null,array('placeholder' => 'Commission', 'class' => 'form-control','id' => 'category_commission'))}}
                         </div>
 
                     </div>
@@ -208,12 +210,12 @@
             };
 
             var html = [];
-            html.push('<div style="text-align:left;margin-top: 5px" class="input-group" id="'+addinvoice_array.category_name+'"> ' +
-                '<input type="hidden" name="category_name[]" value="'+addinvoice_array.category_name+'">' + addinvoice_array.category_name+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' +
-                '<input type="hidden" name="category_price[]" value="'+addinvoice_array.category_price+'">' + addinvoice_array.category_price+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' +
-                '<input type="hidden" name="category_commission[]" value="'+addinvoice_array.category_commission+'">' + addinvoice_array.category_commission+'' +
-                '<span class="input-group-btn" style="padding-left: 5px"><input type="button" value="delete" class="btn btn-small btn-danger deleteCategory" ></span></div>');
-
+            html.push('<div class="list"><label class="control-label col-md-3" for=""></label><div class="col-md-9" style="margin-bottom: 5px">' +
+                '<div class="col-md-3" id="" style="padding-right: 0;padding-left: 0"><input type="text" class="form-control" name="category_name[]" value="'+addinvoice_array.category_name+'"></div>'+
+                '<div class="col-md-2" id="" style="padding-right: 0"><input type="text" class="form-control" name="category_price[]" value="'+addinvoice_array.category_price+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><input type="text" class="form-control" name="category_commission[]" value="'+addinvoice_array.category_commission+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><span class="input-group-btn" style="padding-left: 5px"><input type="button" value="delete" class="btn btn-small btn-danger deleteCategory" rel="" ></span></div>' +
+                '</div></div>');
             $('#category_list').append(html);
 
             $('#category_name').val('');
@@ -224,8 +226,8 @@
         $('.deleteCategory').live("click", function (e) {
 
 
-            var parant     = $(e.target).closest("div");
-
+            //var parant     = $(e.target).closest("div");
+            var parant     = $(e.target).closest(".list");
             var answer     = confirm("Are you sure you want to delete this category name?");
             if (answer) {
                 parant.remove();

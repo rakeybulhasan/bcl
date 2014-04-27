@@ -19,7 +19,11 @@
             <button data-close="alert" class="close"></button>
             {{ Session::get('message') }}
         </div>
+
         @endif
+        <div class="success_message" style="display: none">
+
+        </div>
 
         <table class="table table-striped table-bordered table-hover" id="sample_3">
             <thead>
@@ -31,7 +35,8 @@
                 <th>Price</th>
                 <th>Commission</th>
 
-                <th>update</th>
+                <th>Inline Update</th>
+                <th>Update</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -61,6 +66,7 @@
                     <input type="text" class="form-control commission" name="commission" value="">
                 </td>
 
+                <td> <a href="javascript:;" class="inline_update">Inline Update</a></td>
                 <td> <a href="{{ URL::to('products/update/'.$value->id)}}">Update</a></td>
                 <td> <a href="{{ URL::to('products/delete/'.$value->id)}}">Delete</a></td>
 
@@ -82,6 +88,7 @@
                 { "bSortable": false },
                 null,
 
+                { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
@@ -149,12 +156,27 @@
                 success: function (msg) {
                     elm.closest('tr').find('.price').val(msg.price);
                     elm.closest('tr').find('.commission').val(msg.commission);
+                    elm.closest('tr').find('.inline_update').attr('rel',msg.id);
+                }
+            });
+        }
 
+        $('.inline_update').live("click", function(){
+            var category_id = $(this).attr('rel');
+            var price = $(this).closest('tr').find('.price').val();
+            var commission = $(this).closest('tr').find('.commission').val();
+            $.ajax({
+                type: "post",
+                url: "{{ URL::to('categoryupdate') }}",
+                data: "category_id=" + category_id + "&price=" + price + "&commission=" + commission,
+                dataType: "json",
+                async: false,
+                success: function (msg) {
+                    $('.success_message').html(msg.success_message).fadeIn(1000).fadeOut(5000);
                 }
             });
 
-        }
-
+        });
     })
     @stop
 </script>
