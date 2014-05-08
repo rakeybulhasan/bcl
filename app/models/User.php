@@ -29,6 +29,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->getKey();
     }
 
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
     /**
      * Get the password for the user.
      *
@@ -63,7 +76,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsTo('Country');
     }
 
-
-
+    public function offers()
+    {
+        return $this->hasMany('Offer');
+    }
 
 }

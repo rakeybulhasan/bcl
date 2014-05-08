@@ -12,4 +12,9 @@ class ClientSupplier extends Eloquent
         return $this->belongsTo('Country');
     }
 
+    public function offers()
+    {
+        return $this->hasMany('Offer');
+    }
+
 }

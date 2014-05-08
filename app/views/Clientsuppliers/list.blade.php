@@ -28,8 +28,7 @@
                 <th>Comapny name</th>
                 <th>Type</th>
                 <th>Status</th>
-                <th>Details</th>
-                <th>update</th>
+                <th>Action</th>
 
             </tr>
             </thead>
@@ -58,8 +57,7 @@
                 @endif
                 @endif
 
-                <td> <a href="{{ URL::to('clientsuppliers/details/'.$value->id)}}">Details</a></td>
-                <td> <a href="{{ URL::to('clientsuppliers/update/'.$value->id)}}">Update</a></td>
+                <td> <a href="{{ URL::to('clientsuppliers/details/'.$value->id)}}">Details</a> | <a href="{{ URL::to('clientsuppliers/update/'.$value->id)}}">Update</a></td>
 
 
 
@@ -85,7 +83,6 @@
                 null,
                 null,
                 null,
-                { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false }

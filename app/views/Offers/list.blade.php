@@ -2,62 +2,67 @@
 @section('content')
 <div class="portlet box purple">
     <div class="portlet-title">
-        <div class="caption"><i class="fa fa-cogs"></i>Users List</div>
+        <div class="caption"><i class="fa fa-cogs"></i>Offers List</div>
         <div class="actions">
-            <a href="{{ URL::to('users/add') }}" class="btn green"><i class="fa fa-plus"></i> Add User</a>
+            <a href="{{ URL::to('offers/add') }}" class="btn green"><i class="fa fa-plus"></i> Add Offer</a>
 <!--            <a href="table_managed.html#" class="btn yellow"><i class="fa fa-print"></i> Print</a>-->
         </div>
     </div>
     <div class="portlet-body">
+        <div style="min-height: 70px">
+            <div style="float: left; width: auto; padding-top: 15px" id="statusDiv">
 
+                <a href="{{ URL::to('offers/index') }}" id="activeList">Active</a>&nbsp;|&nbsp;
+                <a href="{{ URL::to('offers/archivelist') }}" id="archiveList">Archived</a>&nbsp;|&nbsp;
+                <a href="{{ URL::to('offers/deletelist') }}" id="deleteList">Deleted</a>
+
+            </div>
+            <div style="float: left;width: 80%; margin-left: 20px">
      @if (Session::has('message'))
         <div class="alert alert-success">
             <button data-close="alert" class="close"></button>
             {{ Session::get('message') }}
         </div>
             @endif
-
+            </div>
+        </div>
+        <div style="clear: both;"></div>
         <table class="table table-striped table-bordered table-hover" id="sample_3">
             <thead>
             <tr>
                 <th class="table-checkbox"><input type="checkbox" class="group-checkable" data-set="#sample_3 .checkboxes" /></th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Country</th>
-                <th>User Type</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Commission</th>
+                <th>Quantity</th>
+                <th>Line Total </th>
+                @if(Request::is('offers/index'))
                 <th>Status</th>
+                @endif
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $key => $value)
+            @foreach($offers as $key => $value)
             <tr class="odd gradeX">
-
                 <td> {{Form::checkbox('sex',1,false,array('class'=>'checkboxes','value'=>1))}}</td>
-                <td> {{ $value->first_name.' '.$value->last_name  }}</td>
-                <td> {{ $value->email }}</td>
-                <td> {{ $value->phone }}</td>
-                <td> {{ $value->country->name }}</td>
-                <td> {{($value->group_id == 1)?'Admin':'Manager'}}</td>
-                @if($value->status == 1)
-                @if(Session::get('user_type') == 1)
-                <td> <a href="{{ URL::to('users/statusdeactive/'.$value->id)}}">Active</a></td>
-                @else
-                <td>Active</td>
+                <td> {{ Str::limit($value-> title, 20) }}</td>
+                <td> {{ $value-> description }}</td>
+                <td> {{ ($value-> category -> category_name)? $value-> category -> category_name : $value-> category -> product -> product_name }}</td>
+                <td> {{ $value-> price }}</td>
+                <td> {{ $value-> price * $value-> quantity * ($value->commission/100) }}</td>
+                <td> {{ $value-> quantity }}</td>
+                <td> {{ $value-> line_total }}</td>
+                @if(Request::is('offers/index'))
+                <td> {{ $value-> status }}</td>
                 @endif
+                @if(Request::is('offers/deletelist') || Request::is('offers/archivelist'))
+                <td> <a href="{{ URL::to('offers/details/'.$value->id)}}">Details</a></td>
                 @else
-                @if(Session::get('user_type') == 1)
-                <td > <a href="{{ URL::to('users/statusactive/'.$value->id)}}"><span class="label label-sm label-danger">Deactive</span></a></td>
-                @else
-                <td><span class="label label-sm label-danger">Deactive</span></td>
+                <td> <a href="{{ URL::to('offers/details/'.$value->id)}}">Details</a> | <a href="{{ URL::to('offers/update/'.$value->id)}}">Update</a> |  <a href="{{ URL::to('offers/delete/'.$value->id)}}">Delete</a> | <a href="{{ URL::to('offers/archive/'.$value->id)}}">Archive</a> | </td>
                 @endif
-                @endif
-
-                <td> <a href="{{ URL::to('users/details/'.$value->id)}}">Details</a> | <a href="{{ URL::to('users/update/'.$value->id)}}">Update</a></td>
-
-
-
 
             </tr>
             @endforeach
@@ -78,6 +83,10 @@
             null,
             null,
             null,
+            null,
+             @if(Request::is('offers/index'))
+        { "bSortable": false },
+        @endif
             { "bSortable": false },
             { "bSortable": false },
             { "bSortable": false }
@@ -87,7 +96,7 @@
             [5, 15, 20, "All"] // change per page values here
         ],
         // set the initial value
-        "iDisplayLength": 5,
+        "iDisplayLength": 15,
         "sPaginationType": "bootstrap",
         "oLanguage": {
             "sLengthMenu": "_MENU_ records",

@@ -28,4 +28,5 @@ Route::post('checkupdate/{$id}','ProductController@putProductupdate');
 Route::post('category', 'ProductController@getCategoryById');
 Route::post('categoryDelete', 'ProductController@getDeleteCategoryById');
 Route::post('categoryupdate', 'ProductController@categoryInlineUpdate');
-Route::controller('files', 'FileController');
+Route::controller('offers', 'OfferController');
+Route::post('checkupdate/{$id}','OfferController@putCheckUpdate');

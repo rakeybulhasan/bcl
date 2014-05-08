@@ -25,6 +25,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <link href="{{ URL::asset('assets/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css') }}" />
+
     <link href="{{ URL::asset('assets/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ URL::asset('assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('assets/plugins/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" type="text/css"/>
@@ -53,7 +55,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <div class="header-inner">
 <!-- BEGIN LOGO -->
 <a class="navbar-brand" href="index.html">
-    <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" class="img-responsive" />
+    <img src="{{ URL::asset('assets/img/logo.png') }}" alt="BCL" class="img-responsive" />
 </a>
 <!-- END LOGO -->
 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -165,43 +167,26 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 <li @if (Request::is('products/add'))class="active"@endif>
                 <a href="{{ URL::to('products/add') }}">Add Product </a>
                 </li>
-                <li @if (Request::is('products/list'))class="active"@endif>
+                <li @if (Request::is('products/index'))class="active"@endif>
                 <a href="{{ URL::to('products/index') }}">Products List </a>
                 </li>
 
         </ul>
     </li>
 
-    <li class="@if (Request::is('categories/*'))active@endif">
+    <li class="@if (Request::is('offers/*'))active@endif">
         <a href="javascript:;">
             <i class="fa fa-gift"></i>
-            <span class="title">Product Category</span>
-            @if (Request::is('categories/*'))<span class="selected"></span>@endif
-            <span class="arrow @if (Request::is('categories/*'))open@endif"></span>
+            <span class="title">Offer</span>
+            @if (Request::is('offers/*'))<span class="selected"></span>@endif
+            <span class="arrow @if (Request::is('offers/*'))open@endif"></span>
         </a>
         <ul class="sub-menu">
-                <li @if (Request::is('categories/add'))class="active"@endif>
-                <a href="{{ URL::to('categories/add') }}">Add Category </a>
-                </li>
-                <li @if (Request::is('categories/list'))class="active"@endif>
-                <a href="{{ URL::to('categories/index') }}">Category List </a>
-                </li>
-
-        </ul>
+            <li @if (Request::is('offers/add'))class="active"@endif>
+            <a href="{{ URL::to('offers/add') }}">Add Offer </a>
     </li>
-    <li class="@if (Request::is('files/*'))active@endif">
-        <a href="javascript:;">
-            <i class="fa fa-gift"></i>
-            <span class="title">File</span>
-            @if (Request::is('files/*'))<span class="selected"></span>@endif
-            <span class="arrow @if (Request::is('files/*'))open@endif"></span>
-        </a>
-        <ul class="sub-menu">
-            <li @if (Request::is('files/add'))class="active"@endif>
-            <a href="{{ URL::to('files/add') }}">Add File </a>
-    </li>
-    <li @if (Request::is('files/list'))class="active"@endif>
-    <a href="{{ URL::to('files/index') }}">File List </a>
+    <li @if (Request::is('offers/index'))class="active"@endif>
+    <a href="{{ URL::to('offers/index') }}">Offer List </a>
     </li>
 
     </ul>
@@ -222,7 +207,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN FOOTER -->
 <div class="footer">
     <div class="footer-inner">
-        2013 &copy; Metronic by keenthemes.
+        2014 &copy; BCL.
     </div>
     <div class="footer-tools">
 			<span class="go-top">
@@ -247,6 +232,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <script src="{{ URL::asset('assets/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/plugins/jquery.cookie.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript" ></script>
+<script type="text/javascript" src="{{ URL::asset('assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>
+
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="{{ URL::asset('assets/plugins/jquery-validation/dist/jquery.validate.min.js') }}"></script>
@@ -279,11 +266,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <script src="{{ URL::asset('assets/scripts/index.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/scripts/tasks.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/scripts/form-validation.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/scripts/table-managed.js') }}"></script>
+<!--<script src="{{ URL::asset('assets/scripts/table-managed.js') }}"></script>-->
 <script src="{{ URL::asset('assets/scripts/form-components.js') }}"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-<script>
-    @yield('javascript');
+<script type="text/javascript">
+
     jQuery(document).ready(function() {
         App.init();
         //FormComponents.init();
@@ -303,7 +290,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         Tasks.initDashboardWidget();
 
     });
-
+    @yield('javascript');
 </script>
 <!-- END JAVASCRIPTS -->
 <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>

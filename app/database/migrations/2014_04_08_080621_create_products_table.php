@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration {
             $table->increments('id');
             $table->string('product_name',100);
             $table->text('description');
-            $table->string('created_by',200);
+            $table->integer('created_by');
             $table->timestamps();
             $table->softDeletes();
         });

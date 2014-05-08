@@ -5,7 +5,9 @@
     <div class="portlet box purple">
         <div class="portlet-title">
             <div class="caption"><i class="fa fa-reorder"></i>Update User</div>
-
+            <div class="actions">
+                <a class="btn" href="{{ URL::to('users/userlist') }}"><i class="fa fa-times"></i></a>
+            </div>
         </div>
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
@@ -66,7 +68,7 @@
                 <div class="form-group">
                     {{Form::label('group_id','User Type', array('class' => 'control-label col-md-3'))}}
                     <div class="col-md-4">
-                        {{Form::select('group_id', $type,$userdata->group_id, array('class'=>'form-control') )}}
+                        {{Form::select('group_id', array('1' => 'admin','2' => 'manager'),$userdata->group_id, array('class'=>'form-control') )}}
                     </div>
                 </div>
 
@@ -119,10 +121,12 @@
         rules: {
             first_name: {
                 minlength: 2,
+                textonly: true,
                 required: true
             },
             last_name: {
                 minlength: 2,
+                textonly: true,
                 required: true
             },
             password: {
@@ -162,6 +166,18 @@
          error1.hide();
          }*/
     });
+        jQuery.validator.addMethod(
+            "textonly",
+            function(value, element)
+            {
+                valid = false;
+                check = /[^-\.a-zA-Z\s\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02AE]/.test(value);
+                if(check==false)
+                    valid = true;
+                return this.optional(element) || valid;
+            },
+            jQuery.format("Please only enter letters.")
+        )
     });
 
     @stop

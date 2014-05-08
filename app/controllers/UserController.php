@@ -32,8 +32,9 @@ class UserController extends BaseController {
             {
                 $user = User::where('email','=',$email)->get();
                 Session::put('user_type',$user[0]->group_id);
-               // $name = $user[0]->first_name.' '.$user[0]->last_name;
-                Session::put('created_by',$email);
+                $id = $user[0]->id;
+                Session::put('created_by',$id);
+               // Session::put('created_by',$email);
                 Session::flash('message', 'User has been Successfully Login.');
                 return    Redirect::to('users/userlist/');
             }
@@ -108,12 +109,11 @@ class UserController extends BaseController {
     public function getUpdate($id)
     {
         $countries = new Country;
-        $types = new UserType;
         $user = User::find($id);
         return View::make('Users.update')
             ->with('userdata',$user)
-            ->with('country', $countries->getCountriesDropDown())
-            ->with('type',$types->getuser_typesDropdown());
+            ->with('country', $countries->getCountriesDropDown());
+
 
     }
 

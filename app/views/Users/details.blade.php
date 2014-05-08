@@ -26,7 +26,7 @@
 </div>
 <div clas="">
     {{Form::label('group_id', 'Type: ', array('class' => '','id' => ''))}}
-    {{ $userdata->group->type_name }}
+    {{($userdata->group_id == 1)?'Admin':'Manager'}}
 </div>
 <div clas="">
     {{Form::label('country_id', 'Country Name: ', array('class' => '','id' => ''))}}

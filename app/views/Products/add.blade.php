@@ -5,7 +5,9 @@
 <div class="portlet box purple">
     <div class="portlet-title">
         <div class="caption"><i class="fa fa-reorder"></i>Add Products</div>
-
+        <div class="actions">
+            <a class="btn" href="{{ URL::to('products/index') }}"><i class="fa fa-times"></i></a>
+        </div>
     </div>
     <div class="portlet-body form">
         <!-- BEGIN FORM-->
@@ -32,10 +34,10 @@
                 <div class="col-md-9">
                     <div class="radio-list">
                         <label>
-                            {{Form::radio('yes_no',1,false,array('class' => 'yes_no'))}}  {{Form::label('Yes')}}
+                            {{Form::radio('has_category',1,false,array('id' => 'yes_no','class' => 'yes_no'))}}  {{Form::label('Yes')}}
                         </label>
                         <label>
-                            {{Form::radio('yes_no',0,true,array('class' => 'yes_no'))}}  {{Form::label('No')}}
+                            {{Form::radio('has_category',0,true,array('id' => 'yes_no','class' => 'yes_no'))}}  {{Form::label('No')}}
                         </label>
 
                     </div>

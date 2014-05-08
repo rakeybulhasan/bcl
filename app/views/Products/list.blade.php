@@ -34,24 +34,21 @@
                 <th>Category Name</th>
                 <th>Price</th>
                 <th>Commission</th>
-
-                <th>Inline Update</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($list as $key => $value)
             <tr class="odd gradeX">
 
-                <td> {{Form::checkbox('sex',1,false,array('class'=>'checkboxes','value'=>1))}}</td>
+                <td> {{Form::checkbox('',1,false,array('class'=>'checkboxes','value'=>1))}}</td>
                 <td> {{ $value->product_name }}</td>
                 <td> {{ $value->description }}</td>
                 <td>
                     <select name="category_id" class="form-control category_id">
 
                       @foreach($value->productcategories as $id=>$categories)
-                            <option value="<?php echo $categories['id'] ?>"> <?php echo ($categories['category_name']!='')?  $categories['category_name']:'Not available' ?> </option>
+                            <option value="<?php echo $categories['id'] ?>"> <?php echo ($categories['category_name']!='')?  $categories['category_name']: $value->product_name ?> </option>
                       @endforeach
 
                     </select>
@@ -66,9 +63,9 @@
                     <input type="text" class="form-control commission" name="commission" value="">
                 </td>
 
-                <td> <a href="javascript:;" class="inline_update">Inline Update</a></td>
-                <td> <a href="{{ URL::to('products/update/'.$value->id)}}">Update</a></td>
-                <td> <a href="{{ URL::to('products/delete/'.$value->id)}}">Delete</a></td>
+                <td> <a href="javascript:;" class="inline_update">Inline Update</a>
+                    | <a href="{{ URL::to('products/update/'.$value->id)}}">Update</a>
+                    | <a href="{{ URL::to('products/delete/'.$value->id)}}">Delete</a></td>
 
             </tr>
             @endforeach
@@ -88,8 +85,6 @@
                 { "bSortable": false },
                 null,
 
-                { "bSortable": false },
-                { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
                 { "bSortable": false },
@@ -117,7 +112,7 @@
             ]
         });
 
-        jQuery('#sample_3 .group-checkable').change(function () {
+        jQuery('#sample_3 .group-checkable').live('change', function () {
             var set = jQuery(this).attr("data-set");
             var checked = jQuery(this).is(":checked");
             jQuery(set).each(function () {
@@ -137,7 +132,7 @@
         success1.fadeOut(5000);
 
 
-        $('.category_id').on("focus blur change", function () {
+        $('.category_id').live("change focus click", function () {
 
             perticularTaskResult(jQuery(this));
         });
@@ -165,16 +160,20 @@
             var category_id = $(this).attr('rel');
             var price = $(this).closest('tr').find('.price').val();
             var commission = $(this).closest('tr').find('.commission').val();
-            $.ajax({
-                type: "post",
-                url: "{{ URL::to('categoryupdate') }}",
-                data: "category_id=" + category_id + "&price=" + price + "&commission=" + commission,
-                dataType: "json",
-                async: false,
-                success: function (msg) {
-                    $('.success_message').html(msg.success_message).fadeIn(1000).fadeOut(5000);
-                }
-            });
+
+            if(category_id!='' || price!='' || commission != ''){
+                $.ajax({
+                    type: "post",
+                    url: "{{ URL::to('categoryupdate') }}",
+                    data: "category_id=" + category_id + "&price=" + price + "&commission=" + commission,
+                    dataType: "json",
+                    async: false,
+                    success: function (msg) {
+                        $('.success_message').html(msg.success_message).fadeIn(1000).fadeOut(5000);
+                    }
+                });
+            }
+
 
         });
     })
