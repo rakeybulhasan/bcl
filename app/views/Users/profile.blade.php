@@ -4,14 +4,14 @@
     <!-- BEGIN VALIDATION STATES-->
     <div class="portlet box purple">
         <div class="portlet-title">
-            <div class="caption"><i class="fa fa-reorder"></i>Add Client Supplier</div>
+            <div class="caption"><i class="fa fa-reorder"></i>Update User</div>
             <div class="actions">
-                <a class="btn" href="{{ URL::to('clientsuppliers/clientlist') }}"><i class="fa fa-times"></i></a>
+                <a class="btn" href="{{ URL::to('users/userlist') }}"><i class="fa fa-times"></i></a>
             </div>
         </div>
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
-            {{Form::open(array('url' => 'clientsuppliers/saveclientsuppliers/', 'method' => 'post', 'class'=>'form-horizontal', 'id'=>'client_supplier_form'))}}
+            {{Form::model($userdata,array('action' => array('UserController@putCheckmyprofile', $userdata->id), 'method' => 'PUT', 'class'=>'form-horizontal', 'id'=>'user_update_form'))}}
             <div class="form-body">
                 <div class="alert alert-danger display-hide">
                     <button data-close="alert" class="close"></button>
@@ -36,9 +36,7 @@
                 <div class="form-group">
                     {{HTML::decode(Form::label('email','Email<span class="required">*</span>',array('class' => 'control-label col-md-3')))}}
                     <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            {{Form::text('email',null,array('placeholder' => 'Email', 'class' => 'form-control','id' => 'email'))}}                        </div>
+                        {{Form::text('email',null,array('placeholder' => 'Email', 'class' => 'form-control','id' => 'email'))}}
                     </div>
                 </div>
 
@@ -48,6 +46,13 @@
                         {{Form::text('phone',null,array('placeholder' => 'Phone No', 'class' => 'form-control','id' => 'phone'))}}
                     </div>
                 </div>
+                <div class="form-group">
+                    {{Form::label('country','Country Name', array('class' => 'control-label col-md-3'))}}
+                    <div class="col-md-4">
+                        {{Form::select('country_id', $country,$userdata->country_id, array('class'=>'form-control'))}}
+                    </div>
+                </div>
+
                 <div class="form-group">
                     {{HTML::decode(Form::label('company_name','Company Name',array('class' => 'control-label col-md-3')))}}
                     <div class="col-md-4">
@@ -61,15 +66,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{Form::label('country','Country Name', array('class' => 'control-label col-md-3'))}}
+                    {{Form::label('group_id','User Type', array('class' => 'control-label col-md-3'))}}
                     <div class="col-md-4">
-                        {{Form::select('country_id', $country,'null', array('class'=>'form-control'))}}
+                        {{Form::select('group_id', array('1' => 'admin','2' => 'manager'),$userdata->group_id, array('class'=>'form-control') )}}
                     </div>
                 </div>
+
+
                 <div class="form-group">
                     {{Form::label('sex','Sex',array('class' => 'col-md-3 control-label'))}}
-
-
                     <div class="col-md-9">
                         <div class="radio-list">
                             <label>
@@ -84,11 +89,19 @@
                 </div>
 
                 <div class="form-group">
-                    {{Form::label('group_id','User Type', array('class' => 'control-label col-md-3'))}}
+                    {{HTML::decode(Form::label('npassword','New Password',array('class' => 'control-label col-md-3')))}}
                     <div class="col-md-4">
-                        {{Form::select('group_id',array('1' => 'Client','2' => 'Supplier'),'null', array('class'=>'form-control') )}}
+                        {{Form::password('new_password',array('placeholder' => 'New Password', 'class' => 'form-control','id' => 'password'))}}
                     </div>
                 </div>
+                <div class="form-group">
+                    {{HTML::decode(Form::label('cpassword','Confirm Password',array('class' => 'control-label col-md-3')))}}
+                    <div class="col-md-4">
+                        {{Form::password('confirm_password',array('placeholder' => 'Confirm Password', 'class' => 'form-control','id' => 'confirm_password'))}}
+                    </div>
+                </div>
+
+
             </div>
             <div class="form-actions fluid">
                 <div class="col-md-offset-3 col-md-9">
@@ -106,7 +119,8 @@
 <script type="text/javascript">
     @section('javascript')
     jQuery(document).ready(function() {
-        var form1 = $('#client_supplier_form');
+        // Put page-specific javascript here
+        var form1 = $('#user_update_form');
         var error1 = $('.alert-danger', form1);
         var success1 = $('.alert-success', form1);
 
@@ -125,6 +139,15 @@
                     minlength: 2,
                     textonly: true,
                     required: true
+                },
+                new_password: {
+                    minlength: 6,
+                    required: true
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
                 },
                 email: {
                     required: true,
@@ -154,7 +177,6 @@
                     .closest('.form-group').removeClass('has-error'); // set success class to the control group
             }
 
-
             /* submitHandler: function (form) {
              success1.show();
              error1.hide();
@@ -173,6 +195,7 @@
             jQuery.format("Please only enter letters.")
         )
     });
+
     @stop
 </script>
 @stop

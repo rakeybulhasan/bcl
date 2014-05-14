@@ -19,6 +19,7 @@ Route::get('/','UserController@getIndex');
 Route::get('users/login','UserController@getIndex');
 Route::controller('users','UserController');
 Route::put('checkupdate/{$id}','UserController@putCheckupdate');
+Route::put('checkmyprofile/{$id}','UserController@putCheckmyprofile');
 Route::controller('clientsuppliers', 'ClientSupplierController');
 Route::post('checkupdate/{$id}','ClientSupplierController@postCheckupdate');
 Route::controller('products', 'ProductController');

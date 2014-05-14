@@ -22,6 +22,7 @@ class OfferController extends BaseController
         return View::make('Offers.list')
             ->with('offers', $offers);
     }
+
     public function getArchivelist()
     {
         $offers = Offer::where('status','=','archive')
@@ -190,7 +191,6 @@ class OfferController extends BaseController
         }
     }
 
-
     public function getUpdate($id)
     {
         $productList = Product::all();
@@ -202,9 +202,9 @@ class OfferController extends BaseController
                 ->with('clientDropDown', $clientList);
 
     }
+
     public function putCheckUpdate($id)
     {
-
         $rules = array(
             'title' => 'required'
         );
@@ -341,14 +341,15 @@ class OfferController extends BaseController
 
             return Redirect::to('offers/index');
         }
-
     }
+
     public function getDetails($id)
     {
         $offers = Offer::find($id);
         return View::make('Offers.details')
             ->with('offerDetails',$offers);
     }
+
     public function getDelete($id)
     {
         $status = 'deleted';
@@ -359,6 +360,7 @@ class OfferController extends BaseController
         return Redirect::to('offers/index');
 
     }
+
     public function getArchive($id)
     {
         $status = 'archive';
@@ -369,7 +371,5 @@ class OfferController extends BaseController
         return Redirect::to('offers/index');
 
     }
-
-
 
 }

@@ -2,7 +2,7 @@
 @section('content')
 <div class="portlet box purple">
     <div class="portlet-title">
-        <div class="caption"><i class="fa fa-cogs"></i>Offers List</div>
+        <div class="caption"><i class="fa fa-cogs"></i>@if(Request::is('offers/index'))Active OffersList @elseif(Request::is('offers/archivelist'))Archive OffersList @elseif(Request::is('offers/deletelist'))Deleted OffersList @endif</div>
         <div class="actions">
             <a href="{{ URL::to('offers/add') }}" class="btn green"><i class="fa fa-plus"></i> Add Offer</a>
 <!--            <a href="table_managed.html#" class="btn yellow"><i class="fa fa-print"></i> Print</a>-->
@@ -59,9 +59,12 @@
                 <td> {{ $value-> status }}</td>
                 @endif
                 @if(Request::is('offers/deletelist') || Request::is('offers/archivelist'))
-                <td> <a href="{{ URL::to('offers/details/'.$value->id)}}">Details</a></td>
+                <td> <a class="btn default btn-xs dark-stripe" href="{{ URL::to('offers/details/'.$value->id)}}"><i class="fa fa-eye"></i> Details</a></td>
                 @else
-                <td> <a href="{{ URL::to('offers/details/'.$value->id)}}">Details</a> | <a href="{{ URL::to('offers/update/'.$value->id)}}">Update</a> |  <a href="{{ URL::to('offers/delete/'.$value->id)}}">Delete</a> | <a href="{{ URL::to('offers/archive/'.$value->id)}}">Archive</a> | </td>
+                <td> <a class="btn default btn-xs dark-stripe" href="{{ URL::to('offers/details/'.$value->id)}}"><i class="fa fa-eye"></i> Details</a>
+                    <a class="btn default btn-xs green-stripe" href="{{ URL::to('offers/update/'.$value->id)}}"><i class="fa fa-edit"></i> Update</a>
+                    <a class="btn default btn-xs red-stripe" href="{{ URL::to('offers/delete/'.$value->id)}}"><i class="fa fa-trash-o"></i> Delete</a>
+                    <a class="btn default btn-xs blue-stripe" href="{{ URL::to('offers/archive/'.$value->id)}}"><i class="fa fa-clipboard"></i> Archive</a> </td>
                 @endif
 
             </tr>

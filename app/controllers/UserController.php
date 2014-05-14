@@ -34,6 +34,7 @@ class UserController extends BaseController {
                 Session::put('user_type',$user[0]->group_id);
                 $id = $user[0]->id;
                 Session::put('created_by',$id);
+                Session::put('user_id',$id);
                // Session::put('created_by',$email);
                 Session::flash('message', 'User has been Successfully Login.');
                 return    Redirect::to('users/userlist/');
@@ -45,6 +46,7 @@ class UserController extends BaseController {
             }
         }
     }
+
     public function getAdd()
     {
         $countries = new Country;
@@ -60,14 +62,21 @@ class UserController extends BaseController {
     public function getUserlist()
     {
 
-        $user = User::all();
+        $user = User::where('status' , '=', 1)
+            ->get();
         return View::make('Users.list')
             ->with('users',$user);
     }
-
+    public  function getDeactivelist()
+    {
+        $list = User::where('status', '=', 0)
+            ->get();
+        return View::make('Users.list')
+            ->with('users',$list);
+    }
     public function getLogout()
     {
-        Auth::logout(); // log the user out of our application
+        Auth::logout();
         return Redirect::to('/');
     }
 
@@ -151,6 +160,57 @@ class UserController extends BaseController {
             return Redirect::to('users/userlist/');
         }
     }
+
+    public function getProfile($id)
+    {
+       // echo 'ok';exit;
+        $countries = new Country;
+        $user = User::find($id);
+        return View::make('Users.profile')
+            ->with('userdata',$user)
+            ->with('country', $countries->getCountriesDropDown());
+    }
+
+    public function putCheckmyprofile($id)
+    {
+        $ruless = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' =>  'required|email|Unique:users,email,'.$id
+
+        );
+        $validate = Validator::make(Input::all(), $ruless);
+
+        if($validate->fails())
+        {
+            return Redirect::to('users/update/'.$id)
+                ->withErrors($validate);
+        }
+        else{
+            $user = User::find($id);
+
+            $user->first_name  = Input::get('first_name');
+            $user->last_name = Input::get('last_name');
+            $user->email = Input::get('email');
+
+            $user->phone = Input::get('phone');
+            $user->company_name = Input::get('company_name');
+            $user->address = Input::get('address');
+            $user->country_id = Input::get('country_id');
+            $user->sex = Input::get('sex');
+            $user->group_id = Input::get('group_id');
+            $user->status = 1;
+            if(Input::get('new_password')!= '' && (Input::get('new_password') == Input::get('confirm_password')))
+            {
+                $user->password = Hash::make(Input::get('new_password'));
+            }
+
+            $user->save();
+            Session::flash('message', 'User has been Successfully Updated.');
+            return Redirect::to('users/userlist/');
+        }
+    }
+
 
     public function getDetails($id)
     {

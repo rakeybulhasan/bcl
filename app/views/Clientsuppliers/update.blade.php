@@ -36,7 +36,9 @@
                 <div class="form-group">
                     {{HTML::decode(Form::label('email','Email<span class="required">*</span>',array('class' => 'control-label col-md-3')))}}
                     <div class="col-md-4">
-                        {{Form::text('email',null,array('placeholder' => 'Email', 'class' => 'form-control','id' => 'email'))}}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            {{Form::text('email',null,array('placeholder' => 'Email', 'class' => 'form-control','id' => 'email'))}}                        </div>
                     </div>
                 </div>
 

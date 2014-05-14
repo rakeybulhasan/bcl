@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>Metronic | Admin Dashboard Template</title>
+    <title>BCl</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
@@ -73,6 +73,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         <i class="fa fa-angle-down"></i>
     </a>
     <ul class="dropdown-menu">
+        <li><a href="{{ URL::to('users/profile/'.Session::get('user_id')) }}"><i class="fa fa-user"></i> My Profile</a>
+        </li>
 
         <li><a href="{{ URL::to('users/logout') }}"><i class="fa fa-key"></i> Log Out</a>
         </li>
@@ -130,7 +132,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <li @if (Request::is('users/add'))class="active"@endif>
                 <a href="{{ URL::to('users/add') }}">Add User </a>
             </li>
-            <li @if (Request::is('users/userlist'))class="active"@endif>
+            <li @if (Request::is('users/userlist') || Request::is('users/deactivelist'))class="active"@endif>
                 <a href="{{ URL::to('users/userlist') }}">User List </a>
             </li>
         </ul>
@@ -147,10 +149,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 <li @if (Request::is('clientsuppliers/add'))class="active"@endif>
                 <a href="{{ URL::to('clientsuppliers/add') }}">Add Client Supplier </a>
                 </li>
-                <li @if (Request::is('clientsuppliers/clientlist'))class="active"@endif>
+                <li @if (Request::is('clientsuppliers/clientlist') || Request::is('clientsuppliers/deactiveclientlist'))class="active"@endif>
                 <a href="{{ URL::to('clientsuppliers/clientlist') }}">Client List </a>
                 </li>
-                <li @if (Request::is('clientsuppliers/supplierlist'))class="active"@endif>
+                <li @if (Request::is('clientsuppliers/supplierlist') || Request::is('clientsuppliers/deactivesupplierlist'))class="active"@endif>
                 <a href="{{ URL::to('clientsuppliers/supplierlist') }}">Supplier List </a>
                 </li>
         </ul>
@@ -176,7 +178,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
     <li class="@if (Request::is('offers/*'))active@endif">
         <a href="javascript:;">
-            <i class="fa fa-gift"></i>
+            <i class="fa fa-file-text"></i>
             <span class="title">Offer</span>
             @if (Request::is('offers/*'))<span class="selected"></span>@endif
             <span class="arrow @if (Request::is('offers/*'))open@endif"></span>
@@ -185,7 +187,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <li @if (Request::is('offers/add'))class="active"@endif>
             <a href="{{ URL::to('offers/add') }}">Add Offer </a>
     </li>
-    <li @if (Request::is('offers/index'))class="active"@endif>
+    <li @if (Request::is('offers/index') || Request::is('offers/archivelist') || Request::is('offers/deletelist'))class="active"@endif>
     <a href="{{ URL::to('offers/index') }}">Offer List </a>
     </li>
 

@@ -107,23 +107,46 @@ class ClientSupplierController extends BaseController{
 
         }
     }
+
     public function getClientlist()
     {
-        $list = ClientSupplier::where('group_id' ,'=',1)->get();
+        $list = ClientSupplier::where('group_id' ,'=',1)
+            ->where('status', '=', 1,'AND')
+            ->get();
         //$listing = ClientSupplier::all();
 
+        return View::make('Clientsuppliers.list')
+            ->with('lists',$list);
+
+    }
+    public function getDeactiveclientlist()
+    {
+        $list = ClientSupplier::where('group_id' ,'=',1)
+            ->where('status', '=', 0,'AND')
+            ->get();
         return View::make('Clientsuppliers.list')
             ->with('lists',$list);
 
     }
     public function getSupplierlist()
     {
-        $list = ClientSupplier::where('group_id' ,'=',2)->get();
-        //$listing = ClientSupplier::all();
+        $list = ClientSupplier::where('group_id' ,'=',2)
+            ->where('status', '=', 1,'AND')
+            ->get();
 
         return View::make('Clientsuppliers.list')
             ->with('lists',$list);
     }
+    public function getDeactivesupplierlist()
+    {
+        $list = ClientSupplier::where('group_id' ,'=',2)
+            ->where('status', '=', 0,'AND')
+            ->get();
+
+        return View::make('Clientsuppliers.list')
+            ->with('lists',$list);
+    }
+
     public function getDetails($id)
     {
         $clientsupplier = ClientSupplier::find($id);
