@@ -63,7 +63,7 @@
                     <input type="text" class="form-control commission" name="commission" value="">
                 </td>
 
-                <td> <a class="btn default btn-xs blue-stripe" href="javascript:;" class="inline_update"><i class="fa fa-edit"></i> Inline Update</a>
+                <td> <a class="btn default btn-xs blue-stripe inline_update" href="javascript:;"><i class="fa fa-edit"></i> Inline Update</a>
                   <a class="btn default btn-xs green-stripe" href="{{ URL::to('products/update/'.$value->id)}}"><i class="fa fa-edit"></i> Update</a>
                    <a class="btn default btn-xs red-stripe" href="{{ URL::to('products/delete/'.$value->id)}}"><i class="fa fa-trash-o"></i> Delete</a></td>
 
