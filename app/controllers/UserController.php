@@ -5,11 +5,11 @@
 
 class UserController extends BaseController {
 
-    public function __construct()
+   /* public function __construct()
     {
         $this->beforeFilter('auth',array('only' => array('getAdd','getUserlist','getUsertypeadd','postSaveuser','getDetails','getUpdate','putCheckupdate','getStatusdeactive','getStatusactive')));
         // $this->beforeFilter('admin');
-    }
+    }*/
     public function getIndex()
     {
 

@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/bcl',
+	'url' => 'http://lbcl.emicroportal.com',
 
 	/*
 	|--------------------------------------------------------------------------
