@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'bcl',
-			'username'  => 'root',
-			'password'  => 'commonrbs',
+			'host'      => 'teamemicro.emicroportal.com',
+			'database'  => 'emicro_lbcl',
+			'username'  => 'teamemicro',
+			'password'  => 'teamemicro123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
