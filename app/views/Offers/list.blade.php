@@ -75,7 +75,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
     @section('javascript')
     jQuery(document).ready(function() {
     // Put page-specific javascript here
@@ -135,6 +135,6 @@
         success1.fadeOut(5000);
     })
     @stop
-</script>
+</script>-->
 
 @stop

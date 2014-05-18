@@ -1,15 +1,11 @@
-
-
 <?php
-
 
 class UserController extends BaseController {
 
-   /* public function __construct()
+    public function __construct()
     {
         $this->beforeFilter('auth',array('only' => array('getAdd','getUserlist','getUsertypeadd','postSaveuser','getDetails','getUpdate','putCheckupdate','getStatusdeactive','getStatusactive')));
-        // $this->beforeFilter('admin');
-    }*/
+    }
     public function getIndex()
     {
 
@@ -35,9 +31,9 @@ class UserController extends BaseController {
                 $id = $user[0]->id;
                 Session::put('created_by',$id);
                 Session::put('user_id',$id);
-               // Session::put('created_by',$email);
+
                 Session::flash('message', 'User has been Successfully Login.');
-                return    Redirect::to('users/userlist/');
+                return    Redirect::to('users/userlist');
             }
             else
             {

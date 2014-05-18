@@ -33,6 +33,7 @@
                     </div>
 
                 {{Form::close()}}
+
 <script type="text/javascript">
     @section('javascript')
     // Put page-specific javascript here
