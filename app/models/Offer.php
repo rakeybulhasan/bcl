@@ -9,14 +9,21 @@
 class Offer extends Eloquent{
     protected $table = 'offers';
 
-    public function category()
+   /* public function category()
     {
         return $this->belongsTo('ProductCategory');
-    }
+    }*/
 
     public function client()
     {
         return $this->belongsTo('ClientSupplier');
     }
-
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+    public function offerproducts()
+    {
+        return $this->hasMany('OfferProduct');
+    }
 }

@@ -13,4 +13,8 @@ class ProductCategory extends Eloquent
         return $this->belongsTo('Product');
     }
 
+    public function productoffer()
+    {
+        return $this->belongsTo('OfferProduct');
+    }
 }

@@ -23,6 +23,49 @@
                     Your form validation is successful!
                 </div>
                 <div class="form-group">
+                    {{Form::label('pi','Has Pi?',array('class' => 'col-md-3 control-label'))}}
+
+
+                    <div class="col-md-9">
+                        <div class="radio-list">
+                            <label>
+                                {{Form::radio('pi',1,true,array('class' => 'pi'))}} {{Form::label('Yes')}}
+                            </label>
+                            <label>
+                                {{Form::radio('pi',0,false,array('class' => 'pi'))}} {{Form::label('No')}}
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="attach">
+
+                    <div class="form-group">
+                        {{HTML::decode(Form::label('attachment','Attachment',array('class' => 'control-label
+                        col-md-3')))}}
+                        <div class="col-md-9">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="input-group">
+													<span class="input-group-btn">
+													<span class="uneditable-input">
+													<i class="fa fa-file fileupload-exists"></i>
+													<span class="fileupload-preview"></span>
+													</span>
+													</span>
+													<span class="btn default btn-file">
+													<span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select file</span>
+													<span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                               {{Form::file('attachment',null,array( 'class' => 'default','id' => 'attachment'))}}
+                                                        <input type="hidden" name="attach" value="{{$offerdata->attachment}}">
+													</span>
+                                    <a data-dismiss="fileupload" class="btn red fileupload-exists" href="form_component.html#"><i class="fa fa-trash-o"></i> Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     {{HTML::decode(Form::label('title','Title',array('class' => 'control-label col-md-3')))}}
                     <div class="col-md-4">
                         {{Form::text('title',null,array('placeholder' => 'Title', 'class' => 'form-control','id' =>
@@ -58,109 +101,89 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-3">Product</label>
 
-                    <div class="col-md-4">
+                <div class="form-group category" id="category_list">
+                    <div class="list">
+                        {{Form::label('category_name','Product Name', array('class' => 'control-label col-md-3'))}}
+                        <div class="col-md-9" style="margin-bottom: 5px">
 
-                        <select id="category_id" class="form-control select2" name="category_id">
-                            <option>Select Product</option>
-                            @foreach ($productDropDown as $value)
+                            <div class="col-md-3" style="padding-right: 0;padding-left: 0">
+                                <select id="category_id" class="form-control select2" name="category_id">
+                                    <option value="">Select Product</option>
+                                    @foreach ($productDropDown as $value)
 
-                            <optgroup label="{{$value['product_name']}}">
+                                    <optgroup label="{{$value['product_name']}}">
 
-                                @foreach($value->productcategories as $category)
+                                        @foreach($value->productcategories as $category)
 
-                                @if($category['category_name']!='')
+                                        @if($category['category_name']!='')
 
-                                <option value="{{$category['id']}}"{{($category['id'] == $offerdata->category_id) ? 'selected="selected"' : '' }} >{{$category['category_name']}}</option>
+                                        <option value="{{$category['id'].'|'.$category['category_name']}}">{{$category['category_name']}}</option>
 
-                                @else
+                                        @else
 
-                                <option value="{{$category['id']}}"{{($category['id'] == $offerdata->category_id) ? 'selected="selected"' : '' }} >{{$value['product_name']}}</option>
-                                @endif
-                                @endforeach
+                                        <option value="{{$category['id'] .'|'. $value['product_name']}}">{{$value['product_name']}}</option>
+                                        @endif
+                                        @endforeach
 
-                            </optgroup>
+                                    </optgroup>
 
-                            @endforeach
+                                    @endforeach
 
-                        </select>
-
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('price','Price',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        <div style="" class="input-group">
-                            <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
-                        {{Form::text('price',null,array('placeholder' => 'Price', 'class' => 'form-control','id' =>
-                        'price'))}}
+                                </select>
                             </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{HTML::decode(Form::label('commission','Commission',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        <div style="" class="input-group">
-                            <span class="input-group-addon bootstrap-touchspin-prefix">%</span>
-                        {{Form::text('commission',null,array('placeholder' => 'Commission', 'class' =>
-                        'form-control','id' => 'commission'))}}
-                            </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('quantity','Quantity',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        {{Form::text('quantity',null,array('placeholder' => 'Quantity', 'class' =>
-                        'form-control','id' => 'quantity'))}}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{Form::label('pi','Has Pi?',array('class' => 'col-md-3 control-label'))}}
-
-
-                    <div class="col-md-9">
-                        <div class="radio-list">
-                            <label>
-                                {{Form::radio('pi',1,true,array('class' => 'pi'))}} {{Form::label('Yes')}}
-                            </label>
-                            <label>
-                                {{Form::radio('pi',0,false,array('class' => 'pi'))}} {{Form::label('No')}}
-                            </label>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="attach">
-
-                    <div class="form-group">
-                        {{HTML::decode(Form::label('attachment','Attachment',array('class' => 'control-label
-                        col-md-3')))}}
-                        <div class="col-md-9">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-group">
-													<span class="input-group-btn">
-													<span class="uneditable-input">
-													<i class="fa fa-file fileupload-exists"></i>
-													<span class="fileupload-preview"></span>
-													</span>
-													</span>
-													<span class="btn default btn-file">
-													<span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select file</span>
-													<span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                               {{Form::file('attachment',null,array( 'class' => 'default','id' => 'attachment'))}}
-													</span>
-                                    <a data-dismiss="fileupload" class="btn red fileupload-exists" href="form_component.html#"><i class="fa fa-trash-o"></i> Remove</a>
+                            <div class="col-md-3" id="" style="padding-right: 0">
+                                <div style="" class="input-group">
+                                    <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
+                                    {{Form::text('price',null,array('placeholder' => 'Price', 'class' => 'form-control price','id' =>
+                                    'price'))}}
                                 </div>
                             </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                <div style="" class="input-group">
+                                    <span class="input-group-addon bootstrap-touchspin-prefix">%</span>
+                                    {{Form::text('commission',null,array('placeholder' => 'Commission', 'class' =>
+                                    'form-control commission','id' => 'commission'))}}
+                                </div>
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                {{Form::text('quantity',null,array('placeholder' => 'Quantity', 'class' => 'form-control','id' => 'quantity'))}}
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+												<span class="input-group-btn" style="padding-left: 5px">
+												<a id="product_update" class="btn green" href="javascript:;"> Add</a>
+												</span>
+                            </div>
                         </div>
                     </div>
+                    @foreach ($offerdata->offerproducts as $category)
+                    <div class="list">
+                        {{Form::hidden('line_total[]',$category['line_total'], array('class' => 'form-control line_total'))}}
+                        {{Form::label('','', array('class' => 'control-label col-md-3'))}}
+
+                        <div class="col-md-9" style="margin-bottom: 5px">
+                            {{Form::hidden('id[]',$category['id'], array('class' => 'form-control'))}}
+                            <div class="col-md-3" id="" style="padding-right: 0;padding-left: 0">
+                                {{Form::hidden('category_id[]',$category['category_id'], array('class' => 'form-control','id' => 'category_id'))}}
+                                {{Form::text('',(($category->category->category_name !='') ? $category->category->category_name : $category->category-> product -> product_name),array('placeholder' => 'Category name', 'class' => 'form-control'))}}
+                            </div>
+                            <div class="col-md-3" id="" style="padding-right: 0">
+                                {{Form::text('price[]',$category['price'],array('placeholder' => 'Price', 'class' => 'form-control category_price','id' => 'category_price'))}}
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                {{Form::text('commission[]',$category['commission'],array('placeholder' => 'Commission', 'class' => 'form-control','id' => 'category_commission'))}}
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                {{Form::text('quantity[]',$category['quantity'],array('placeholder' => 'Quantity', 'class' => 'form-control','id' => 'category_commission'))}}
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                <span class="input-group-btn" style="padding-left: 5px"><input type="button" value="delete" class="btn btn-small btn-danger deleteCategory" rel="{{$category['id']}}" ></span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
+                {{Form::hidden('grand_total',null,array('class' => 'grand_total'))}}
 
             </div>
             <div class="form-actions fluid">
@@ -199,11 +222,7 @@
                 },
                 client_id: {
                     required: true
-                },
-                category_id: {
-                    required: true
                 }
-
             },
 
             invalidHandler: function (event, validator) { //display error alert on form submit
@@ -267,6 +286,91 @@
                 }
             });
         }
+
+        $('#product_update').live("click", function () {
+
+            saveCategory();
+            grandLineTotal();
+        });
+        function saveCategory(invoice_id)
+        {
+
+            var category_id_name = $('#category_id').val();
+            var cat_name = category_id_name.split('|');
+            var category_id = cat_name[0];
+            var category_name = cat_name[1];
+            var category_price = $('#price').val();
+            var category_commission = $('#commission').val();
+            var quantity = $('#quantity').val();
+            var line_total =  (category_price * quantity) + ((category_price * quantity) * category_commission/100);
+
+            if(category_id_name=='' || category_price=='' || category_commission == ''|| quantity == ''){
+                return false;
+            }
+
+            var addinvoice_array = {
+
+                "category_id": category_id,
+                "category_name": category_name,
+                "category_price": category_price,
+                "category_commission": category_commission,
+                "quantity": quantity,
+                "line_total": line_total
+            };
+
+            var html = [];
+            html.push('<div class="list"><input type="hidden" class="form-control line_total" name="line_total[]" value="'+addinvoice_array.line_total+'"><label class="control-label col-md-3" for=""></label><div class="col-md-9" style="margin-bottom: 5px">' +
+                '<div class="col-md-3" id="" style="padding-right: 0;padding-left: 0"><input type="hidden" name="id[]" value=""><input type="hidden" class="form-control" name="category_id[]" value="'+addinvoice_array.category_id+'"><input type="text" readonly class="form-control" name="" value="'+addinvoice_array.category_name+'"></div>'+
+                '<div class="col-md-3" id="" style="padding-right: 0"><input type="text" readonly class="form-control" name="price[]" value="'+addinvoice_array.category_price+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><input type="text" readonly class="form-control" name="commission[]" value="'+addinvoice_array.category_commission+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><input type="text" readonly class="form-control" name="quantity[]" value="'+addinvoice_array.quantity+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><span class="input-group-btn" style="padding-left: 5px"><input type="button" value="delete" class="btn btn-small btn-danger deleteCategory" rel="" ></span></div>' +
+                '</div></div>');
+            $('#category_list').append(html);
+
+            $('#category_id').val('');
+            $('#price').val('');
+            $('#commission').val('');
+            $('#quantity').val('');
+
+        }
+
+        function grandLineTotal(){
+            var sum = 0.0;
+            $('.line_total').each(function()
+            {
+                sum += parseFloat(this.value);
+            });
+
+            $('input[name=grand_total]').val(sum);
+        }
+
+        $('.deleteCategory').live("click", function (e) {
+
+
+            var parant     = $(e.target).closest(".list");
+            var category_id = $(this).attr('rel');
+
+            var answer     = confirm("Are you sure you want to delete this category name?");
+            if (answer) {
+                parant.remove();
+                grandLineTotal();
+            } else {
+                return false;
+            }
+            $.ajax({
+                type: "post",
+                url: "{{ URL::to('offerProductDelete') }}",
+
+                data: "category_id=" + category_id,
+                dataType: "json",
+                async: false,
+                success: function (msg) {
+
+                }
+            });
+
+        });
 
     });
 

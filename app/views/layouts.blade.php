@@ -69,7 +69,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <li class="dropdown user">
     <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <img alt="" src="{{URL::asset('assets/css/custom.css')}}"/>
-        <span class="username">{{Session::get('user_name');}}</span>
+        <span class="username">{{User::find(Session::get('user_id'))->first_name.' '.User::find(Session::get('user_id'))->last_name}}</span>
         <i class="fa fa-angle-down"></i>
     </a>
     <ul class="dropdown-menu">

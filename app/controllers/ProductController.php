@@ -185,8 +185,9 @@ class ProductController extends BaseController
 
     public function getCategoryById()
     {
-        $id = $_POST['category_id'];
-        $info = ProductCategory::find($id)->toJson();
+        $id_name = $_POST['category_id'];
+        $id = explode("|", $id_name);
+        $info = ProductCategory::find($id[0])->toJson();
         return $info;
 
     }

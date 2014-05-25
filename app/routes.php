@@ -26,3 +26,5 @@ Route::post('categoryDelete', 'ProductController@getDeleteCategoryById');
 Route::post('categoryupdate', 'ProductController@categoryInlineUpdate');
 Route::controller('offers', 'OfferController');
 Route::post('checkupdate/{$id}','OfferController@putCheckUpdate');
+Route::post('categoryinfo', 'OfferController@getCategoryId');
+Route::post('offerProductDelete', 'OfferController@getDeleteOfferProductById');

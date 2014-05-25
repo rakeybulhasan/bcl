@@ -17,12 +17,6 @@ class CreateOffersTable extends Migration {
             $table->increments('id');
             $table->string('title',200);
             $table->text('description');
-            $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('product_categories');
-            $table->float('price',10,2);
-            $table->float('commission',10,2);
-            $table->integer('quantity');
-            $table->float('line_total',15,2);
             $table->string('attachment',200);
             $table->boolean('pi');
             $table->unsignedInteger('client_id');

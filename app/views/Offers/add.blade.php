@@ -22,108 +22,6 @@
                     <button data-close="alert" class="close"></button>
                     Your form validation is successful!
                 </div>
-
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('title','Title',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        {{Form::text('title',null,array('placeholder' => 'Title', 'class' => 'form-control','id' =>
-                        'title'))}}
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('description','Description',array('class' => 'control-label
-                    col-md-3')))}}
-                    <div class="col-md-4">
-                        {{Form::textarea('description',null,array('class' => 'form-control','id' => 'Description',
-                        'rows'=>'3'))}}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-3">Client</label>
-
-                    <div class="col-md-4">
-
-                        <select id="client_id" class="form-control select2" name="client_id">
-                            <option value="">Select Cient</option>
-                            @foreach ($clientDropDown as $value)
-
-                            <option value="{{$value['id']}}">{{$value['first_name'].' '.$value['last_name']}}</option>
-
-                            @endforeach
-
-                        </select>
-
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <label class="control-label col-md-3">Product</label>
-
-                    <div class="col-md-4">
-
-                        <select id="category_id" class="form-control select2" name="category_id">
-                           <option value="">Select Product</option>
-                            @foreach ($productDropDown as $value)
-
-                            <optgroup label="{{$value['product_name']}}">
-
-                                @foreach($value->productcategories as $category)
-
-                                @if($category['category_name']!='')
-
-                                <option value="{{$category['id']}}">{{$category['category_name']}}</option>
-
-                                @else
-
-                                <option value="{{$category['id']}}">{{$value['product_name']}}</option>
-                                @endif
-                                @endforeach
-
-                            </optgroup>
-
-                            @endforeach
-
-                        </select>
-
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('price','Price',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        <div style="" class="input-group">
-                            <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
-                        {{Form::text('price',null,array('placeholder' => 'Price', 'class' => 'form-control price','id' =>
-                        'price'))}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('commission','Commission',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        <div style="" class="input-group">
-                            <span class="input-group-addon bootstrap-touchspin-prefix">%</span>
-                        {{Form::text('commission',null,array('placeholder' => 'Commission', 'class' =>
-                        'form-control commission','id' => 'commission'))}}
-                            </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{HTML::decode(Form::label('quantity','Quantity',array('class' => 'control-label col-md-3')))}}
-                    <div class="col-md-4">
-                        {{Form::text('quantity',null,array('placeholder' => 'Quantity', 'class' =>
-                        'form-control','id' => 'quantity'))}}
-                    </div>
-                </div>
-
-
                 <div class="form-group">
                     {{Form::label('pi','Has Pi?',array('class' => 'col-md-3 control-label'))}}
 
@@ -165,6 +63,100 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    {{HTML::decode(Form::label('title','Title',array('class' => 'control-label col-md-3')))}}
+                    <div class="col-md-4">
+                        {{Form::text('title',null,array('placeholder' => 'Title', 'class' => 'form-control','id' =>
+                        'title'))}}
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    {{HTML::decode(Form::label('description','Description',array('class' => 'control-label
+                    col-md-3')))}}
+                    <div class="col-md-4">
+                        {{Form::textarea('description',null,array('class' => 'form-control','id' => 'Description',
+                        'rows'=>'3'))}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Client</label>
+
+                    <div class="col-md-4">
+
+                        <select id="client_id" class="form-control select2" name="client_id">
+                            <option value="">Select Cient</option>
+                            @foreach ($clientDropDown as $value)
+
+                            <option value="{{$value['id']}}">{{$value['first_name'].' '.$value['last_name']}}</option>
+
+                            @endforeach
+
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group category" id="category_list">
+                    <div class="list">
+                        {{Form::label('category_name','Product Name', array('class' => 'control-label col-md-3'))}}
+                        <div class="col-md-9" style="margin-bottom: 5px">
+
+                            <div class="col-md-3" style="padding-right: 0;padding-left: 0">
+                                <select id="category_id" class="form-control select2" name="category_id">
+                                    <option value="">Select Product</option>
+                                    @foreach ($productDropDown as $value)
+
+                                    <optgroup label="{{$value['product_name']}}">
+
+                                        @foreach($value->productcategories as $category)
+
+                                        @if($category['category_name']!='')
+
+                                        <option value="{{$category['id'].'|'.$category['category_name']}}">{{$category['category_name']}}</option>
+
+                                        @else
+
+                                        <option value="{{$category['id'].'|'.$value['product_name']}}">{{$value['product_name']}}</option>
+                                        @endif
+                                        @endforeach
+
+                                    </optgroup>
+
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <div class="col-md-3" id="" style="padding-right: 0">
+                                <div style="" class="input-group">
+                                    <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
+                                    {{Form::text('price',null,array('placeholder' => 'Price', 'class' => 'form-control price','id' =>
+                                    'price'))}}
+                                </div>
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                <div style="" class="input-group">
+                                    <span class="input-group-addon bootstrap-touchspin-prefix">%</span>
+                                    {{Form::text('commission',null,array('placeholder' => 'Commission', 'class' =>
+                                    'form-control commission','id' => 'commission'))}}
+                                </div>
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+                                {{Form::text('quantity',null,array('placeholder' => 'Quantity', 'class' => 'form-control','id' => 'quantity'))}}
+                            </div>
+                            <div class="col-md-2" id="" style="padding-right: 0">
+												<span class="input-group-btn" style="padding-left: 5px">
+												<a id="product_add" class="btn green" href="javascript:;"> Add</a>
+												</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input name="grand_total" class="grand_total" value="" type="hidden">
+
 
             </div>
             <div class="form-actions fluid">
@@ -202,9 +194,6 @@
                     required: true
                 },
                 client_id: {
-                    required: true
-                },
-                category_id: {
                     required: true
                 }
 
@@ -273,6 +262,78 @@
         }
 
 
+        $('#product_add').live("click", function () {
+
+            saveCategory();
+            grandLineTotal();
+        });
+
+        function saveCategory(invoice_id)
+        {
+
+            var category_id_name = $('#category_id').val();
+            var cat_name = category_id_name.split('|');
+            var category_id = cat_name[0];
+            var category_name = cat_name[1];
+            var category_price = $('#price').val();
+            var category_commission = $('#commission').val();
+            var quantity = $('#quantity').val();
+            var line_total =  (category_price * quantity) + ((category_price * quantity) * category_commission/100);
+
+            if(category_id_name=='' || category_price=='' || category_commission == ''|| quantity == ''){
+                return false;
+            }
+
+            var addinvoice_array = {
+
+                "category_id": category_id,
+                "category_name": category_name,
+                "category_price": category_price,
+                "category_commission": category_commission,
+                "quantity": quantity,
+                "line_total": line_total
+            };
+
+            var html = [];
+            html.push('<div class="list"><input type="hidden" class="form-control line_total" name="line_total[]" value="'+addinvoice_array.line_total+'"><label class="control-label col-md-3" for=""></label><div class="col-md-9" style="margin-bottom: 5px">' +
+                '<div class="col-md-3" id="" style="padding-right: 0;padding-left: 0"><input type="hidden" class="form-control" name="category_id[]" value="'+addinvoice_array.category_id+'"><input type="text" readonly class="form-control" name="" value="'+addinvoice_array.category_name+'"></div>'+
+                '<div class="col-md-3" id="" style="padding-right: 0"><input type="text" readonly class="form-control" name="price[]" value="'+addinvoice_array.category_price+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><input type="text" readonly class="form-control" name="commission[]" value="'+addinvoice_array.category_commission+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><input type="text" readonly class="form-control" name="quantity[]" value="'+addinvoice_array.quantity+'"></div>' +
+                '<div class="col-md-2" id="" style="padding-right: 0"><span class="input-group-btn" style="padding-left: 5px"><input type="button" value="delete" class="btn btn-small btn-danger deleteCategory" rel="" ></span></div>' +
+                '</div></div>');
+            $('#category_list').append(html);
+
+            $('#category_id').val('');
+            $('#price').val('');
+            $('#commission').val('');
+            $('#quantity').val('');
+
+        }
+        $('.deleteCategory').live("click", function (e) {
+
+
+            //var parant     = $(e.target).closest("div");
+            var parant     = $(e.target).closest(".list");
+            var answer     = confirm("Are you sure you want to delete this category name?");
+            if (answer) {
+                parant.remove();
+                grandLineTotal();
+            } else {
+                return false;
+            }
+
+        });
+
+        function grandLineTotal(){
+            var sum = 0.0;
+            $('.line_total').each(function()
+            {
+                sum += parseFloat(this.value);
+            });
+
+            $('input[name=grand_total]').val(sum);
+        }
     });
 
     @stop

@@ -148,30 +148,8 @@
              error1.hide();
              }*/
         });
-        $("#price").TouchSpin({
-            inputGroupClass: 'input-medium',
-            spinUpClass: 'green',
-            spinDownClass: 'green',
-            min: -1000000000,
-            max: 1000000000,
-            stepinterval: 50,
-            maxboostedstep: 10000000,
-            prefix: '$'
-        });
-        $("#commission").TouchSpin({
-            inputGroupClass: 'input-medium',
-            spinUpClass: 'blue',
-            spinDownClass: 'blue',
-            min: 0,
-            max: 100,
-            step: 0.1,
-            decimals: 2,
-            boostat: 5,
-            maxboostedstep: 10,
-            postfix: '%'
-        });
 
-        $('#yes_no').live("click", function () {
+           $('#yes_no').live("click", function () {
 
             var ans = $(this).val();
             if(ans == 1)

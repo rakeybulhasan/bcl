@@ -14,7 +14,7 @@ class AddStatusToOffers extends Migration {
 	{
 
         Schema::table('offers', function($table) {
-            $table->string('status',100);
+            $table->string('status',100)->after('description');
         });
 	}
 
